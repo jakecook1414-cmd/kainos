@@ -3,83 +3,165 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Kainos Labs</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<meta name="description" content="Kainos Labs — science-backed sleep and recovery supplements. Faith-rooted mission, 10% of profits to Christian foundations."/>
+<title>Kainos Labs | Deep Recovery. Real Sleep.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --olive: #4a5240;
-    --olive-light: #6b7260;
-    --olive-pale: #e8ead4;
-    --beige: #f5f0e8;
-    --beige-dark: #e8dfc8;
-    --navy: #1c2540;
-    --navy-light: #2e3d5c;
-    --cream: #faf8f3;
-    --text-dark: #1a1a14;
-    --text-mid: #3d3d2e;
-    --text-muted: #7a7a60;
-    --gold: #c9a84c;
-    --gold-light: #e8d08a;
+    --olive: #3d4538;
+    --olive-light: #5c6654;
+    --olive-pale: #e4e8dc;
+    --beige: #f0ebe3;
+    --beige-dark: #ddd4c4;
+    --navy: #161d2e;
+    --navy-light: #2a3548;
+    --cream: #f9f7f2;
+    --text-dark: #14140f;
+    --text-mid: #3a3a32;
+    --text-muted: #6b6b5c;
+    --gold: #b8923a;
+    --gold-light: #d4b86a;
+    --border-subtle: rgba(61, 69, 56, 0.1);
+    --shadow-sm: 0 1px 2px rgba(22, 29, 46, 0.04);
+    --shadow-md: 0 12px 40px rgba(22, 29, 46, 0.08);
+    --radius: 8px;
+    --radius-lg: 12px;
+    --container: min(1180px, 100% - 3rem);
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-optical-sizing: auto;
     background: var(--cream);
     color: var(--text-dark);
     overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+  }
+  .skip-link:focus {
+    position: fixed; left: 1rem; top: 1rem; z-index: 200;
+    width: auto; height: auto; padding: 0.75rem 1rem;
+    background: var(--navy); color: var(--cream); text-decoration: none;
+    font-size: 0.85rem; border-radius: var(--radius);
+  }
+
+  .container {
+    width: var(--container);
+    margin-inline: auto;
   }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(249, 247, 242, 0.88);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(250,248,243,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(74,82,64,0.12);
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
   }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem; font-weight: 500; letter-spacing: 0.12em;
+    font-size: 1.35rem; font-weight: 500; letter-spacing: 0.14em;
     color: var(--olive); text-decoration: none;
     text-transform: uppercase;
   }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+  }
   .nav-links a {
-    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--text-mid); text-decoration: none; font-weight: 400;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-mid); text-decoration: none; font-weight: 500;
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--olive); }
   .nav-cta {
     background: var(--olive); color: var(--cream);
-    border: none; padding: 0.6rem 1.5rem; border-radius: 2px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.78rem;
-    letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer;
-    transition: background 0.2s;
+    border: none; padding: 0.65rem 1.35rem; border-radius: var(--radius);
+    font-family: inherit; font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
   }
-  .nav-cta:hover { background: var(--olive-light); }
+  .nav-cta:hover { background: var(--navy); }
+  .nav-cta:active { transform: scale(0.98); }
+  .nav-cta-mobile-item { display: none; list-style: none; }
+  .nav-cta--full { width: calc(100% - 3rem); margin: 0.75rem 1.5rem 0; }
+  .nav-toggle {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 5px;
+    width: 2.5rem; height: 2.5rem; padding: 0; border: none;
+    background: transparent; cursor: pointer; border-radius: var(--radius);
+  }
+  .nav-toggle span {
+    display: block; width: 1.35rem; height: 2px;
+    background: var(--olive); margin-inline: auto;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 
   /* HERO */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 8rem 3rem 4rem;
+    min-height: 100dvh;
     position: relative;
     overflow: hidden;
     background: var(--cream);
+    padding: 6.5rem 0 4rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 70% 20%, rgba(184, 146, 58, 0.06), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 10% 80%, rgba(61, 69, 56, 0.04), transparent 50%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 1.5rem 0;
+    position: relative;
+    z-index: 1;
   }
   .hero-bg-text {
-    position: absolute; bottom: -2rem; right: -1rem;
+    position: absolute; bottom: -4rem; right: -2rem;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 18vw; font-weight: 300; line-height: 1;
-    color: rgba(74,82,64,0.05); pointer-events: none;
+    font-size: clamp(10rem, 22vw, 18rem); font-weight: 300; line-height: 1;
+    color: rgba(61, 69, 56, 0.035); pointer-events: none;
     letter-spacing: -0.02em; user-select: none;
   }
   .hero-left { position: relative; z-index: 2; }
@@ -109,26 +191,31 @@
     color: var(--text-muted); margin-bottom: 2rem; font-weight: 400;
   }
   .hero-desc {
-    font-size: 1rem; line-height: 1.75; color: var(--text-mid);
-    max-width: 420px; margin-bottom: 2.5rem;
+    font-size: 1.05rem; line-height: 1.75; color: var(--text-mid);
+    max-width: 28rem; margin-bottom: 2.25rem;
   }
-  .hero-actions { display: flex; align-items: center; gap: 1.5rem; }
+  .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
   .btn-primary {
     background: var(--olive); color: var(--cream);
-    padding: 0.9rem 2.2rem; border: none; border-radius: 2px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
-    letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
-    transition: all 0.25s; font-weight: 500;
+    padding: 0.95rem 1.85rem; border: none; border-radius: var(--radius);
+    font-family: inherit; font-size: 0.75rem;
+    letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s; font-weight: 600;
+    box-shadow: var(--shadow-sm);
   }
-  .btn-primary:hover { background: var(--navy); transform: translateY(-1px); }
+  .btn-primary:hover { background: var(--navy); box-shadow: var(--shadow-md); }
   .btn-ghost {
     background: transparent; color: var(--olive);
-    padding: 0.9rem 2.2rem; border: 1px solid var(--olive);
-    border-radius: 2px; font-family: 'DM Sans', sans-serif;
-    font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: all 0.25s; font-weight: 500;
+    padding: 0.95rem 1.85rem; border: 1px solid var(--border-subtle);
+    border-radius: var(--radius); font-family: inherit;
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: border-color 0.2s, background 0.2s; font-weight: 600;
   }
-  .btn-ghost:hover { background: var(--olive); color: var(--cream); }
+  .btn-ghost:hover {
+    background: rgba(61, 69, 56, 0.06);
+    border-color: rgba(61, 69, 56, 0.25);
+  }
+  a.btn-ghost { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 
   .hero-right {
     display: flex; justify-content: center; align-items: center;
@@ -145,7 +232,7 @@
     position: relative;
     display: flex; flex-direction: column; align-items: center;
     justify-content: center;
-    box-shadow: 0 30px 80px rgba(28,37,64,0.25), 0 8px 24px rgba(74,82,64,0.2);
+    box-shadow: var(--shadow-md), 0 24px 64px rgba(22, 29, 46, 0.12);
   }
   .bottle-cap {
     position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
@@ -211,27 +298,32 @@
 
   /* STATS BAR */
   .stats-bar {
-    background: var(--olive);
+    background: linear-gradient(180deg, var(--olive) 0%, #323a30 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .stats-bar-inner {
+    max-width: 1180px; margin: 0 auto;
     display: grid; grid-template-columns: repeat(4, 1fr);
-    padding: 2rem 3rem;
+    padding: 2.25rem 1.5rem;
   }
   .stat-item {
-    text-align: center; padding: 0.5rem;
-    border-right: 1px solid rgba(250,248,243,0.15);
+    text-align: center; padding: 0.65rem 0.5rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
   }
   .stat-item:last-child { border-right: none; }
   .stat-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem; font-weight: 300; color: var(--cream);
-    line-height: 1;
+    font-size: clamp(1.75rem, 3vw, 2.35rem); font-weight: 400; color: var(--cream);
+    line-height: 1; letter-spacing: -0.02em;
   }
   .stat-label {
-    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--olive-pale); margin-top: 0.3rem;
+    font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(228, 232, 220, 0.75); margin-top: 0.45rem; font-weight: 500;
   }
 
   /* SECTION STYLES */
-  section { padding: 6rem 3rem; }
+  section { padding: 5.5rem 1.5rem; }
+  .shell { max-width: 1180px; margin-left: auto; margin-right: auto; }
 
   .section-eyebrow {
     display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
@@ -256,7 +348,9 @@
   /* ABOUT / MISSION */
   .mission-section {
     background: var(--navy);
-    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+  }
+  .mission-shell {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
     align-items: center;
   }
   .mission-left .section-eyebrow span { color: var(--gold); }
@@ -305,12 +399,13 @@
   .product-section { background: var(--beige); }
   .product-grid {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 4rem; align-items: center; margin-top: 3rem;
+    gap: 3.5rem; align-items: start; margin-top: 2.5rem;
   }
   .product-card-large {
     background: var(--cream);
-    border: 1px solid var(--beige-dark);
-    border-radius: 8px; padding: 3rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg); padding: 2.75rem;
+    box-shadow: var(--shadow-sm);
     text-align: center; position: relative; overflow: hidden;
   }
   .product-card-large::before {
@@ -372,50 +467,6 @@
   }
   .detail-text { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
 
-  /* FOUNDER */
-  .founder-section { background: var(--cream); }
-  .founder-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 5rem; align-items: center; margin-top: 3rem;
-  }
-  .founder-img-wrap {
-    position: relative;
-  }
-  .founder-placeholder {
-    width: 100%; aspect-ratio: 3/4;
-    background: var(--olive-pale);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-  .founder-placeholder::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 40%; background: linear-gradient(to top, rgba(74,82,64,0.3), transparent);
-  }
-  .founder-placeholder-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem; color: var(--olive-light); letter-spacing: 0.1em;
-    text-transform: uppercase; z-index: 1;
-  }
-  .founder-accent-box {
-    position: absolute; bottom: -1.5rem; right: -1.5rem;
-    background: var(--navy); color: var(--cream);
-    padding: 1.25rem 1.5rem; border-radius: 4px; width: 180px;
-  }
-  .founder-accent-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem; margin-bottom: 0.2rem;
-  }
-  .founder-accent-title { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
-  .founder-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem; font-weight: 300; font-style: italic;
-    color: var(--text-dark); line-height: 1.4; margin-bottom: 1.5rem;
-    border-left: 3px solid var(--gold); padding-left: 1.5rem;
-  }
-  .founder-bio { font-size: 0.9rem; line-height: 1.8; color: var(--text-mid); }
-
   /* AI SECTION */
   .ai-section {
     background: var(--navy);
@@ -433,6 +484,11 @@
   .ai-section .section-eyebrow span { color: var(--gold); }
   .ai-section .section-eyebrow-line { background: var(--gold); }
   .ai-section .section-desc { color: rgba(250,248,243,0.65); margin-bottom: 3rem; }
+  .ai-section .ai-lede { max-width: 36rem; }
+  .ai-disclaimer {
+    display: block; margin-top: 0.75rem; font-size: 0.82rem;
+    font-style: italic; opacity: 0.75; color: rgba(250,248,243,0.55);
+  }
   .ai-features {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
     margin-top: 3rem;
@@ -478,15 +534,23 @@
 
   /* CTA / PREORDER */
   .cta-section {
-    background: var(--beige);
-    text-align: center; padding: 6rem 3rem;
+    background: linear-gradient(180deg, var(--beige) 0%, var(--cream) 100%);
+    text-align: center; padding: 5.5rem 1.5rem;
+    border-top: 1px solid var(--border-subtle);
   }
-  .cta-section .section-title { margin: 0 auto 1rem; max-width: 600px; }
-  .cta-section .section-desc { margin: 0 auto 2.5rem; text-align: center; }
+  .cta-section .section-eyebrow { justify-content: center; }
+  .cta-section .section-title { margin: 0 auto 1rem; max-width: 36rem; text-align: center; }
+  .cta-section .section-desc { margin: 0 auto 2rem; text-align: center; max-width: 32rem; }
+  .cta-footnote {
+    font-size: 0.72rem; color: var(--text-muted); margin-top: 1.25rem;
+    letter-spacing: 0.04em; text-align: center;
+  }
   .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
   .email-form {
-    display: flex; gap: 0; max-width: 440px; width: 100%;
-    border: 1px solid var(--olive); border-radius: 2px; overflow: hidden;
+    display: flex; gap: 0; max-width: 420px; width: 100%;
+    margin-inline: auto;
+    border: 1px solid var(--border-subtle); border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow-sm);
   }
   .email-input {
     flex: 1; padding: 0.85rem 1.2rem; border: none; outline: none;
@@ -505,9 +569,13 @@
 
   /* FOOTER */
   footer {
-    background: var(--text-dark); padding: 3rem;
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 1rem;
+    background: var(--navy); padding: 2.75rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-inner {
+    max-width: 1180px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 2rem;
   }
   .footer-logo {
     font-family: 'Cormorant Garamond', serif;
@@ -544,37 +612,71 @@
   .hero-actions { animation-delay: 0.5s; }
   .hero-right { animation: fadeUp 0.9s 0.3s ease both; }
 
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; padding-top: 1rem; }
+    .hero-right { order: -1; margin-bottom: 0.5rem; }
+    .product-visual { margin: 0 auto; }
+  }
+
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
-    .hero-right { margin-top: 3rem; }
-    .stats-bar { grid-template-columns: repeat(2, 1fr); }
-    section { padding: 4rem 1.5rem; }
-    .mission-section, .product-grid, .founder-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    html { scroll-padding-top: 4.5rem; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed; inset: 0; top: 3.75rem;
+      flex-direction: column; justify-content: flex-start;
+      gap: 0; padding: 1rem 0;
+      background: rgba(249, 247, 242, 0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      transform: translateY(-120%); opacity: 0; visibility: hidden;
+      transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s;
+    }
+    .nav-links.is-open {
+      transform: translateY(0); opacity: 1; visibility: visible;
+    }
+    .nav-links li { width: 100%; border-bottom: 1px solid var(--border-subtle); }
+    .nav-links a { display: block; padding: 1rem 1.5rem; font-size: 0.8rem; }
+    .nav-inner > .nav-cta { display: none; }
+    .nav-cta-mobile-item { display: list-item; border-bottom: none; padding-top: 0.25rem; }
+    .stats-bar-inner { grid-template-columns: repeat(2, 1fr); padding: 1.75rem 1rem; }
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(1), .stat-item:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.1); }
+    section { padding: 3.75rem 1.25rem; }
+    .mission-shell, .product-grid { grid-template-columns: 1fr; gap: 2.25rem; }
     .ai-features { grid-template-columns: 1fr; }
-    footer { flex-direction: column; text-align: center; }
-    .founder-accent-box { display: none; }
+    .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+    .footer-links { justify-content: center; flex-wrap: wrap; }
+    .qr-loyalty { flex-direction: column; text-align: center; }
   }
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">Kainos Labs</a>
-  <ul class="nav-links">
-    <li><a href="#product">Product</a></li>
-    <li><a href="#mission">Mission</a></li>
-    <li><a href="#founder">Founder</a></li>
-    <li><a href="#kainos-ai">Kainos AI</a></li>
-  </ul>
-  <button class="nav-cta">Join Waitlist</button>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Kainos Labs</a>
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#product">Product</a></li>
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#kainos-ai">Kainos AI</a></li>
+      <li class="nav-cta-mobile-item"><button type="button" class="nav-cta nav-cta--full" data-scroll="waitlist">Join waitlist</button></li>
+    </ul>
+    <button type="button" class="nav-cta" data-scroll="waitlist">Join waitlist</button>
+  </div>
 </nav>
+
+<main id="main">
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-text">DEEP</div>
+  <div class="hero-bg-text" aria-hidden="true">DEEP</div>
+  <div class="hero-inner">
   <div class="hero-left">
     <div class="hero-eyebrow">
       <div class="hero-eyebrow-line"></div>
@@ -588,8 +690,8 @@
       Kainos Labs was built at the intersection of athletic performance, sleep science, and nervous system recovery. Not wellness. Not hype. Recovery that works at the cellular level.
     </p>
     <div class="hero-actions">
-      <button class="btn-primary">Join the Waitlist</button>
-      <button class="btn-ghost">Learn More</button>
+      <button type="button" class="btn-primary" data-scroll="waitlist">Join the waitlist</button>
+      <a class="btn-ghost" href="#product">View product</a>
     </div>
   </div>
   <div class="hero-right">
@@ -605,8 +707,8 @@
         <div class="bottle-cross">✝</div>
       </div>
       <div class="pill-badge">
-        <span class="pill-badge-label">Launching</span>
-        <span class="pill-badge-val">Summer '25</span>
+        <span class="pill-badge-label">Launch window</span>
+        <span class="pill-badge-val">2026</span>
       </div>
       <div class="mission-badge">
         <span class="mission-badge-title">Our Tithe</span>
@@ -614,10 +716,12 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- STATS BAR -->
 <div class="stats-bar">
+  <div class="stats-bar-inner">
   <div class="stat-item">
     <div class="stat-num">10%</div>
     <div class="stat-label">Profits to Mission</div>
@@ -631,13 +735,15 @@
     <div class="stat-label">Fillers or Fluff</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">∞</div>
-    <div class="stat-label">Recovery Potential</div>
+    <div class="stat-num">1</div>
+    <div class="stat-label">Flagship formula</div>
+  </div>
   </div>
 </div>
 
 <!-- MISSION -->
 <section class="mission-section" id="mission">
+  <div class="shell mission-shell">
   <div class="mission-left">
     <div class="section-eyebrow">
       <div class="section-eyebrow-line"></div>
@@ -692,10 +798,12 @@
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- PRODUCT -->
 <section class="product-section" id="product">
+  <div class="shell">
   <div class="section-eyebrow">
     <div class="section-eyebrow-line"></div>
     <span>Phase 1 Product</span>
@@ -738,44 +846,18 @@
       </div>
     </div>
   </div>
-</section>
-
-<!-- FOUNDER -->
-<section class="founder-section" id="founder">
-  <div class="founder-grid">
-    <div class="founder-img-wrap">
-      <div class="founder-placeholder">
-        <span class="founder-placeholder-text">Jake Cook · Founder</span>
-      </div>
-      <div class="founder-accent-box">
-        <div class="founder-accent-name">Jake Cook</div>
-        <div class="founder-accent-title">Founder · TCU Finance</div>
-      </div>
-    </div>
-    <div class="founder-content">
-      <div class="section-eyebrow">
-        <div class="section-eyebrow-line"></div>
-        <span>The Founder</span>
-      </div>
-      <h2 class="section-title">Built by an Athlete,<br><em>For Athletes</em></h2>
-      <blockquote class="founder-quote">
-        "I didn't sleep well for two years of college football. I knew there had to be a better answer than melatonin gummies."
-      </blockquote>
-      <p class="founder-bio">
-        Jake Cook played collegiate football and watched recovery be treated as an afterthought. As a finance major at TCU, he brought the same discipline he applied to the field into building a brand designed to close the gap between effort and recovery. Kainos Labs is the product he wished existed — and a company built to last.
-      </p>
-    </div>
   </div>
 </section>
 
 <!-- KAINOS AI -->
 <section class="ai-section" id="kainos-ai">
+  <div class="shell">
   <div class="section-eyebrow">
     <div class="section-eyebrow-line"></div>
     <span>The Future</span>
   </div>
   <h2 class="section-title">Kainos <em>AI</em></h2>
-  <p class="section-desc" style="max-width:560px;">The next frontier of personalized recovery. An AI layer built into your Kainos experience that learns your body, your schedule, and your goals — and tells you exactly how to optimize.</p>
+  <p class="section-desc ai-lede">The next frontier of personalized recovery: an AI layer built into your Kainos experience that learns your schedule and goals — and helps you optimize timing and stack composition. <span class="ai-disclaimer">Roadmap vision; not a medical device.</span></p>
   <div class="ai-features">
     <div class="ai-feature">
       <div class="ai-feature-num">01</div>
@@ -784,8 +866,8 @@
     </div>
     <div class="ai-feature">
       <div class="ai-feature-num">02</div>
-      <div class="ai-feature-title">Blood Work Analysis</div>
-      <div class="ai-feature-text">Upload your labs. Our AI reads your biomarkers and recommends the exact supplements your body is deficient in — not guesswork.</div>
+      <div class="ai-feature-title">Lab-informed guidance</div>
+      <div class="ai-feature-text">Planned capability: securely share lab results (with your consent) to surface education-first insights and stack suggestions you can discuss with your clinician — never a substitute for medical advice.</div>
     </div>
     <div class="ai-feature">
       <div class="ai-feature-num">03</div>
@@ -793,3 +875,85 @@
       <div class="ai-feature-text">Answer a few questions about how you feel and what you're optimizing for. Kainos AI builds your personalized supplement protocol.</div>
     </div>
   </div>
+  <div class="qr-loyalty">
+    <div class="qr-icon" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#d4b86a" stroke-width="1.25">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h2v2h-2zm4 0h2v2h-2zm-4 4h6v2h-6z"/>
+      </svg>
+    </div>
+    <div>
+      <div class="qr-loyalty-title">On packaging &amp; reordering</div>
+      <div class="qr-loyalty-text">We’re designing simple <strong>QR-based flows</strong> so loyal customers can reorder, get product education, and stay connected to the mission — without friction.</div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="waitlist">
+  <div class="shell">
+    <div class="section-eyebrow">
+      <div class="section-eyebrow-line"></div>
+      <span>Early access</span>
+    </div>
+    <h2 class="section-title">Join the <em>waitlist</em></h2>
+    <p class="section-desc">Be first to know when Kainos Deep launches. No spam — launch updates and formulation notes only.</p>
+    <form class="email-form" action="#" method="post" onsubmit="event.preventDefault();">
+      <input type="email" class="email-input" name="email" placeholder="Work or personal email" required autocomplete="email" aria-label="Email address"/>
+      <button type="submit" class="email-submit">Notify me</button>
+    </form>
+    <p class="cta-footnote">We respect your inbox. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Kainos Labs</div>
+      <div class="footer-meaning">καινός — made new</div>
+    </div>
+    <div class="footer-links">
+      <a href="#product">Product</a>
+      <a href="#mission">Mission</a>
+      <a href="#waitlist">Waitlist</a>
+    </div>
+    <p class="footer-copy">© <span id="y"></span> Kainos Labs. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('nav-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      var open = !menu.classList.contains('is-open');
+      menu.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+  }
+  document.querySelectorAll('[data-scroll="waitlist"]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var w = document.getElementById('waitlist');
+      if (w) w.scrollIntoView({ behavior: 'smooth' });
+      if (menu) menu.classList.remove('is-open');
+      if (toggle) { toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open menu'); }
+    });
+  });
+  var y = document.getElementById('y');
+  if (y) y.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
