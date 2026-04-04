@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" width="600" height="180">
+  <rect width="600" height="180" fill="#F5F0E8"/>
+  <path d="M 68,88 Q 300,12 532,88" fill="none" stroke="#16213E" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="68" cy="88" r="4" fill="#16213E"/>
+  <circle cx="532" cy="88" r="4" fill="#16213E"/>
+  <text x="300" y="138" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="80" font-weight="400" letter-spacing="24" fill="#16213E">KAINOS</text>
+  <text x="300" y="162" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="300" letter-spacing="14" fill="rgba(22,33,62,0.38)">BE MADE NEW</text>
+</svg>
