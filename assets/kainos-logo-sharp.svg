@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 380" role="img" aria-labelledby="title desc">
+  <title id="title">Kainos brand logo</title>
+  <desc id="desc">KAINOS wordmark with arc and motto BE MADE NEW.</desc>
+  <rect width="1600" height="380" fill="#f0ebe3"/>
+  <g fill="#161d2e" stroke="#161d2e">
+    <text x="120" y="250" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="250" font-weight="500" letter-spacing="28">KAINOS</text>
+    <path d="M90 118 C 520 -8, 1090 -8, 1510 118" fill="none" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="80" cy="118" r="12"/>
+    <circle cx="1520" cy="118" r="12"/>
+  </g>
+  <text x="800" y="336" fill="#8d95a3" text-anchor="middle" font-family="'DM Sans', Arial, sans-serif" font-size="56" font-weight="500" letter-spacing="20">BE MADE NEW</text>
+</svg>
