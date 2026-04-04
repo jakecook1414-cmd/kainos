@@ -40,56 +40,7 @@
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" as="style"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="styles.css"/>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var menu = document.getElementById('nav-menu');
-  var toggle = document.querySelector('.nav-toggle');
-
-  function closeNavMenu() {
-    if (menu) menu.classList.remove('is-open');
-    if (toggle) {
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Open menu');
-    }
-  }
-
-  function openNavMenu() {
-    if (menu) menu.classList.add('is-open');
-    if (toggle) {
-      toggle.setAttribute('aria-expanded', 'true');
-      toggle.setAttribute('aria-label', 'Close menu');
-    }
-  }
-
-  if (toggle && menu) {
-    toggle.addEventListener('click', function() {
-      if (menu.classList.contains('is-open')) {
-        closeNavMenu();
-      } else {
-        openNavMenu();
-      }
-    });
-    menu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeNavMenu);
-    });
-    menu.querySelectorAll('button').forEach(function (btn) {
-      btn.addEventListener('click', closeNavMenu);
-    });
-  }
-
-  document.querySelectorAll('[data-scroll="waitlist"]').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      closeNavMenu();
-      var target = document.getElementById('waitlist');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        window.location.href = 'index.html#waitlist';
-      }
-    });
-  });
-});
-</script>
+<script src="main.js" defer></script>
 </head>
 <body>
 
@@ -130,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="about-mission-eyebrow-line"></div>
           <span>Why we exist</span>
         </div>
-        <h2 id="mission-heading" style="font-size:36px; font-weight:400; color:#16213E; font-family:Georgia,serif; margin:0 0 1rem; line-height:1.2;">Restored sleep,<br><em style="font-style:italic;">restored life</em></h2>
-        <p style="font-family:Georgia,serif; font-size:0.95rem; line-height:1.8; color:rgba(22,33,62,0.72); margin:0;">
+        <h2 id="mission-heading" class="about-mission-heading">Restored sleep,<br><em>restored life</em></h2>
+        <p class="body-narrow">
           <em lang="el">Kainos</em> (καινός) is the word for <em>new</em> — not patched-up, but made new. We believe deep sleep and honest recovery are part of stewarding the body well. That starts with individuals who sleep deeply, recover fully, and show up clear-eyed.
         </p>
       </div>
@@ -183,12 +134,12 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </section>
 
-<section style="background-color:#16213E; padding:80px 24px; text-align:center;">
-  <div style="max-width:580px; margin:0 auto;">
-    <p style="font-family:Georgia,serif; font-size:12px; letter-spacing:3px; text-transform:uppercase; color:rgba(245,240,232,0.55); margin:0 0 20px;">Limited founding spots</p>
-    <h2 style="font-family:Georgia,serif; font-size:36px; font-weight:400; color:#F5F0E8; letter-spacing:1px; line-height:1.3; margin:0 0 20px;">Be first.<br>Stay first.</h2>
-    <p style="font-family:Georgia,serif; font-size:17px; color:rgba(245,240,232,0.75); line-height:1.8; margin:0 0 16px;">Founding member pricing is available to the first 100 people on the list. Once those spots are gone, the price goes to standard retail. Join now and we'll send your founding code the moment we're ready to launch.</p>
-    <p style="font-family:Georgia,serif; font-size:13px; color:rgba(245,240,232,0.50); margin:0 0 32px; font-style:italic;">"Therefore, if anyone is in Christ, the new creation has come." — 2 Corinthians 5:17</p>
+<section class="cta-band cta-band--soft" aria-labelledby="cta-about-heading">
+  <div class="cta-band__inner">
+    <p class="eyebrow eyebrow--on-dark">Founding list</p>
+    <h2 id="cta-about-heading" class="h-section h-section--on-dark">Get early access</h2>
+    <p class="lead lead--on-dark">The first hundred on the list receive founding pricing when we launch. Add your email — we'll send your code when Kainos Deep is ready.</p>
+    <p class="quote-attribution">"Therefore, if anyone is in Christ, the new creation has come." — 2 Corinthians 5:17</p>
     <div class="klaviyo-form-V8hLfp"></div>
   </div>
 </section>
@@ -196,12 +147,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </main>
 
 <footer class="site-footer-simple">
-  <p class="site-footer-simple__text">© 2026 Kainos Bio Labs · Be Made New · 5% of profits donated to Christian charitable causes · <script>document.write('<a href="mailto:hello@kainosbiolabs.com" style="color:inherit;">hello@kainosbiolabs.com<\/a>');</script><noscript>hello [at] kainosbiolabs [dot] com</noscript></p>
+  <p class="site-footer-simple__text">© 2026 Kainos Bio Labs · Be Made New · 5% of profits donated to Christian charitable causes · <script>document.write('<a href="mailto:hello@kainosbiolabs.com" class="footer-mail">hello@kainosbiolabs.com<\/a>');</script><noscript>hello [at] kainosbiolabs [dot] com</noscript></p>
 </footer>
 
 <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/Ubpd6k/klaviyo.js?company_id=Ubpd6k'></script>
 <script type="text/javascript">
-//Initialize Klaviyo object on page load
 !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
 </script>
 </body>
