@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-  <circle cx="50" cy="50" r="48" fill="#16213E"/>
-  <line x1="36" y1="18" x2="36" y2="82" stroke="#F5F0E8" stroke-width="13" stroke-linecap="butt"/>
-  <line x1="42" y1="50" x2="74" y2="18" stroke="#F5F0E8" stroke-width="11" stroke-linecap="butt"/>
-  <line x1="42" y1="50" x2="74" y2="82" stroke="#F5F0E8" stroke-width="11" stroke-linecap="butt"/>
-  <rect x="16" y="46" width="20" height="8" fill="#BF8E3A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#16213E"/>
+  <path d="M 92 165 C 180 95 332 95 420 165" fill="none" stroke="#F5F0E8" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="92" cy="165" r="10" fill="#F5F0E8"/>
+  <circle cx="420" cy="165" r="10" fill="#F5F0E8"/>
+  <text x="256" y="405" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="300" font-weight="700" fill="#F5F0E8">K</text>
 </svg>
