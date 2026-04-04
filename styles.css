@@ -342,7 +342,7 @@ body {
   flex-shrink: 1;
   min-width: 0;
 }
-/* Final brand mark: kainos-logo-navy-on-cream.svg (600×180 artboard) — scale by width only to preserve proportions */
+/* Nav mark: kainos-logo-navy-transparent.svg (600×180) — navy on transparent; scale by width only */
 .nav-logo-img {
   width: clamp(152px, 36vw, 220px);
   height: auto;
