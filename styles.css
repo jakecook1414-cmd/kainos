@@ -1556,6 +1556,16 @@ body {
   .product-deep-pricing > .price-card {
     min-width: 100% !important;
   }
+  .price-card__note {
+    line-height: 1.42;
+    max-width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .product-detail-trust__list {
+    row-gap: 0.4rem;
+    column-gap: 1.35rem;
+  }
   .ingredient-deep-dive .h-section {
     font-size: clamp(1.45rem, 5.5vw, 1.85rem) !important;
   }
