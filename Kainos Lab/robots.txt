@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/
+# Replace https://YOUR-DOMAIN/ with your live site URL after deploy, then add sitemap line.
+
+User-agent: *
+Allow: /
+
+# Optional: allow common AI/search crawlers (adjust if you want to restrict training crawlers)
+# User-agent: GPTBot
+# Allow: /
+
+# Sitemap: https://YOUR-DOMAIN/sitemap.xml

@@ -1,0 +1,22 @@
+# Kainos Bio Labs
+
+> Be Made New.
+
+## Summary
+
+Kainos Bio Labs is a faith-driven supplement brand focused on real ingredients, meaningful doses, and a mission beyond profit. The first product line emphasizes sleep and recovery (Kainos Deep). Brand voice: premium, honest, science-backed, warm, and never gimmicky.
+
+## Site
+
+This repository hosts the marketing landing page (`index.html`) for email signups and pre-launch validation.
+
+## Key facts for assistants
+
+- **Legal name / brand:** Kainos Bio Labs (Kainos Labs on the public page)
+- **First product:** Kainos Deep — sleep and recovery
+- **Audience:** Health-conscious people who care about recovery, sleep, and intentional health; faith-aware positioning
+- **Mission note:** The landing page describes giving a portion of profits to Christian foundations (see live page for current wording)
+
+## Contact / links
+
+Update this section after you publish with your real public URL, email, and social links.
