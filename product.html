@@ -79,27 +79,9 @@
       <span class="product-badge">Kainos Bio Labs</span>
       <div>
         <h1 id="product-hero-heading" class="product-hero-title">Kainos Deep</h1>
-        <p class="product-hero-lead">Clinically dosed sleep and recovery support — transparent labeling and a faith-forward commitment to stewardship.</p>
+        <p class="product-hero-lead">Clinically dosed sleep and recovery — transparent labeling and a faith-forward commitment to stewardship.</p>
       </div>
-      <div class="stat-grid-compact" aria-label="Key amounts">
-        <div class="stat-compact">
-          <div class="stat-compact__val">600mg</div>
-          <div class="stat-compact__label">KSM-66® Ashwagandha</div>
-        </div>
-        <div class="stat-compact">
-          <div class="stat-compact__val">200mg</div>
-          <div class="stat-compact__label">L-Theanine</div>
-        </div>
-        <div class="stat-compact">
-          <div class="stat-compact__val">250mg</div>
-          <div class="stat-compact__label">Magnesium bisglycinate</div>
-        </div>
-        <div class="stat-compact">
-          <div class="stat-compact__val">30</div>
-          <div class="stat-compact__label">Servings</div>
-        </div>
-      </div>
-      <div class="btn-row">
+      <div class="btn-row product-hero__actions">
         <a class="btn btn--primary" href="#kainos-deep">Pricing &amp; details</a>
         <a class="btn btn--ghost" href="#supplement-facts">Supplement facts</a>
       </div>
@@ -147,15 +129,23 @@
       </div>
     </div>
   </div>
+  <div class="product-trust-strip-wrap">
+    <ul class="product-trust-strip" aria-label="Product standards">
+      <li>Clinically dosed</li>
+      <li>No proprietary blends</li>
+      <li>Third-party tested</li>
+      <li>30 servings</li>
+    </ul>
+  </div>
 </section>
 
 <section id="kainos-deep" class="product-detail-sheet" aria-labelledby="product-details-heading">
-  <div class="container container--product-grid">
+  <div class="container container--product-wide">
     <div class="product-detail-grid">
       <div class="product-detail-main">
         <header class="product-deep__header">
           <p class="eyebrow">First release</p>
-          <h2 id="product-details-heading" class="h-section">Kainos Deep powder</h2>
+          <h2 id="product-details-heading" class="h-section product-detail-main__title">Kainos Deep powder</h2>
           <p class="product-deep__sub">Sleep &amp; recovery formula · 30 servings</p>
         </header>
         <hr class="divider product-deep__divider"/>
@@ -181,55 +171,58 @@
         <p class="fda-note">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
       </div>
       <aside class="product-detail-facts" id="supplement-facts" aria-labelledby="sf-heading">
-        <h2 id="sf-heading" class="visually-hidden">Supplement facts</h2>
-        <div class="supplement-facts-panel supplement-facts-panel--embed">
-          <p class="sf-title">Supplement Facts</p>
-          <p class="sf-meta">Serving Size: 1 Scoop (6.6g)</p>
-          <p class="sf-meta">Servings Per Container: 30</p>
-          <div class="sf-header-row">
-            <span>Amount Per Serving</span>
-            <span>% Daily Value</span>
-          </div>
-          <div class="sf-row">
-            <div><strong>Magnesium</strong> <span>(as Bisglycinate)</span></div>
-            <div><span>250mg</span> <span>60%</span></div>
-          </div>
-          <div class="sf-row">
-            <div><strong>Zinc</strong> <span>(as Bisglycinate)</span></div>
-            <div><span>11mg</span> <span>100%</span></div>
-          </div>
-          <div class="sf-row">
-            <div><strong>L-Glycine</strong></div>
-            <div><span>3,000mg</span> <span>*</span></div>
-          </div>
-          <div class="sf-row">
-            <div><strong>L-Glutamine</strong></div>
-            <div><span>2,000mg</span> <span>*</span></div>
-          </div>
-          <div class="sf-row">
-            <div><strong>Ashwagandha Root Extract</strong> <span class="sf-sub">(KSM-66®, 5% withanolides)</span></div>
-            <div><span>600mg</span> <span>*</span></div>
-          </div>
-          <div class="sf-row">
-            <div><strong>Tart Cherry Extract</strong> <span class="sf-sub">(VitaCherry®, Montmorency)</span></div>
-            <div><span>500mg</span> <span>*</span></div>
-          </div>
-          <div class="sf-row">
-            <div><strong>L-Theanine</strong></div>
-            <div><span>200mg</span> <span>*</span></div>
-          </div>
-          <div class="sf-row">
-            <div><strong>Apigenin</strong> <span>(Chamomile Extract)</span></div>
-            <div><span>50mg</span> <span>*</span></div>
-          </div>
-          <div class="sf-row">
-            <div><strong>Melatonin</strong></div>
-            <div><span>0.5mg</span> <span>*</span></div>
-          </div>
-          <div class="sf-foot">
-            <p>* Daily Value not established</p>
-            <p><strong>Other Ingredients:</strong> Natural flavors, Citric acid, Silicon dioxide</p>
-            <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+        <h2 id="sf-heading" class="product-detail-facts__heading">Supplement facts</h2>
+        <p class="product-detail-facts__note">Official label · amounts per serving</p>
+        <div class="product-detail-facts__surface">
+          <div class="supplement-facts-panel supplement-facts-panel--embed">
+            <p class="sf-title">Supplement Facts</p>
+            <p class="sf-meta">Serving Size: 1 Scoop (6.6g)</p>
+            <p class="sf-meta">Servings Per Container: 30</p>
+            <div class="sf-header-row">
+              <span>Amount Per Serving</span>
+              <span>% Daily Value</span>
+            </div>
+            <div class="sf-row">
+              <div><strong>Magnesium</strong> <span>(as Bisglycinate)</span></div>
+              <div><span>250mg</span> <span>60%</span></div>
+            </div>
+            <div class="sf-row">
+              <div><strong>Zinc</strong> <span>(as Bisglycinate)</span></div>
+              <div><span>11mg</span> <span>100%</span></div>
+            </div>
+            <div class="sf-row">
+              <div><strong>L-Glycine</strong></div>
+              <div><span>3,000mg</span> <span>*</span></div>
+            </div>
+            <div class="sf-row">
+              <div><strong>L-Glutamine</strong></div>
+              <div><span>2,000mg</span> <span>*</span></div>
+            </div>
+            <div class="sf-row">
+              <div><strong>Ashwagandha Root Extract</strong> <span class="sf-sub">(KSM-66®, 5% withanolides)</span></div>
+              <div><span>600mg</span> <span>*</span></div>
+            </div>
+            <div class="sf-row">
+              <div><strong>Tart Cherry Extract</strong> <span class="sf-sub">(VitaCherry®, Montmorency)</span></div>
+              <div><span>500mg</span> <span>*</span></div>
+            </div>
+            <div class="sf-row">
+              <div><strong>L-Theanine</strong></div>
+              <div><span>200mg</span> <span>*</span></div>
+            </div>
+            <div class="sf-row">
+              <div><strong>Apigenin</strong> <span>(Chamomile Extract)</span></div>
+              <div><span>50mg</span> <span>*</span></div>
+            </div>
+            <div class="sf-row">
+              <div><strong>Melatonin</strong></div>
+              <div><span>0.5mg</span> <span>*</span></div>
+            </div>
+            <div class="sf-foot">
+              <p>* Daily Value not established</p>
+              <p><strong>Other Ingredients:</strong> Natural flavors, Citric acid, Silicon dioxide</p>
+              <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+            </div>
           </div>
         </div>
       </aside>
@@ -237,11 +230,41 @@
   </div>
 </section>
 
+<section class="product-why section section--cream" id="why-deep" aria-labelledby="why-deep-heading">
+  <div class="container container--lg">
+    <header class="product-section-intro">
+      <p class="eyebrow">Why Kainos Deep</p>
+      <h2 id="why-deep-heading" class="h-section product-why__headline">Built for nights that actually restore you.</h2>
+      <p class="product-why__deck">Outcomes first — then the ingredient-level detail when you want to go deeper.</p>
+    </header>
+    <ul class="product-benefit-grid">
+      <li class="product-benefit-card">
+        <h3 class="product-benefit-card__title">Fall asleep faster</h3>
+        <p class="product-benefit-card__text">Support a calmer wind-down so you can drift off with less friction.</p>
+      </li>
+      <li class="product-benefit-card">
+        <h3 class="product-benefit-card__title">Support deeper recovery</h3>
+        <p class="product-benefit-card__text">Actives chosen to align with sleep architecture and overnight repair — not trend-chasing doses.</p>
+      </li>
+      <li class="product-benefit-card">
+        <h3 class="product-benefit-card__title">Clinically dosed, fully transparent</h3>
+        <p class="product-benefit-card__text">Every amount on the label. No proprietary blends, no undisclosed fillers.</p>
+      </li>
+      <li class="product-benefit-card">
+        <h3 class="product-benefit-card__title">Wake without heavy grogginess</h3>
+        <p class="product-benefit-card__text">Low-dose melatonin and balancing ingredients aimed at a clearer morning.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <section class="ingredient-deep-dive section section--secondary" id="ingredients" aria-labelledby="ingredient-heading">
   <div class="container container--md">
-    <p class="eyebrow">Why every ingredient is here</p>
-    <h2 id="ingredient-heading" class="h-section">Built with intention.<br>Dosed for science, not marketing.</h2>
-    <div class="product-disclosure-stack">
+    <header class="product-section-intro product-section-intro--tight">
+      <p class="eyebrow">Ingredient rationale</p>
+      <h2 id="ingredient-heading" class="h-section">Built with intention.<br>Dosed for science, not marketing.</h2>
+    </header>
+    <div class="product-disclosure-stack product-disclosure-stack--editorial">
       <details class="product-disclosure">
         <summary class="product-disclosure__summary">L-Glycine — 3,000mg</summary>
         <div class="product-disclosure__body">
@@ -300,11 +323,14 @@
   </div>
 </section>
 
-<section class="section section--navy how-to-section section--tight" aria-labelledby="how-heading">
+<section class="section section--navy how-to-section" aria-labelledby="how-heading">
   <div class="container container--md">
-    <p class="eyebrow eyebrow--on-dark eyebrow--center eyebrow--tight-bottom">How to use</p>
-    <h2 id="how-heading" class="how-to-lead">Simple. Consistent. Every night.</h2>
-    <div class="product-disclosure-stack product-disclosure-stack--dark">
+    <header class="product-section-intro product-section-intro--on-dark">
+      <p class="eyebrow eyebrow--on-dark eyebrow--center eyebrow--tight-bottom">How to use</p>
+      <h2 id="how-heading" class="how-to-lead">Simple. Consistent. Every night.</h2>
+      <p class="how-to-deck">Tap a row for timing, consistency, and everyday guidance.</p>
+    </header>
+    <div class="product-disclosure-stack product-disclosure-stack--dark product-disclosure-stack--editorial">
       <details class="product-disclosure product-disclosure--dark">
         <summary class="product-disclosure__summary">01 · Measure one scoop</summary>
         <div class="product-disclosure__body">
