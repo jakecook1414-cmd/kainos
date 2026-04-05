@@ -1,14 +1,9 @@
-# Kainos Bio Labs — single canonical host: https://www.kainosbiolabs.com
-# If cPanel already sets “redirect to www”, remove this file or the rules below to avoid redirect loops.
+RewriteEngine On
 
-<IfModule mod_rewrite.c>
-  RewriteEngine On
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\.kainosbiolabs\.com [NC]
+RewriteRule ^(.*)$ https://kainosbiolabs.com/$1 [L,R=301]
 
-  # HTTP → HTTPS (same host)
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-  # Apex (non-www) → www
-  RewriteCond %{HTTP_HOST} ^kainosbiolabs\.com$ [NC]
-  RewriteRule ^ https://www.kainosbiolabs.com%{REQUEST_URI} [L,R=301]
-</IfModule>
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://kainosbiolabs.com/$1 [L,R=301]
