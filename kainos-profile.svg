@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <rect width="800" height="800" fill="#16213E"/>
+
+  <!-- Arc — pulled in significantly so it fits inside circle crop -->
+  <path d="M 255,330 C 320,220 480,220 545,330"
+        fill="none" stroke="#F5F0E8" stroke-width="4.5" stroke-linecap="round"/>
+  <circle cx="255" cy="330" r="7" fill="#F5F0E8"/>
+  <circle cx="545" cy="330" r="7" fill="#F5F0E8"/>
+
+  <!-- KAINOS wordmark — scaled down, centered, well within safe zone -->
+  <text x="400" y="490"
+        text-anchor="middle"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="128"
+        font-weight="400"
+        letter-spacing="14"
+        fill="#F5F0E8">KAINOS</text>
+
+  <!-- BE MADE NEW whisper -->
+  <text x="400" y="540"
+        text-anchor="middle"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="26"
+        font-weight="400"
+        letter-spacing="16"
+        fill="rgba(245,240,232,0.38)">BE MADE NEW</text>
+</svg>
