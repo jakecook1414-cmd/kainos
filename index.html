@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.klaviyo.com https://www.klaviyo.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://www.klaviyo.com https://a.klaviyo.com; frame-ancestors 'none';"/>
 <link rel="canonical" href="https://kainosbiolabs.com/"/>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3431XCGMX7"></script>
@@ -44,36 +49,72 @@
 <script src="main.js" defer></script>
 </head>
 <body>
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header>
 <nav class="site-nav" id="site-nav" aria-label="Primary">
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html" aria-label="Kainos Bio Labs — home">
+    <a class="nav-logo" href="index.html" aria-label="Kainos Bio Labs — home" data-nav-match="home">
       <img class="nav-logo-img" src="kainos-logo-navy-transparent.svg" width="600" height="180" alt="" decoding="async" fetchpriority="high"/>
     </a>
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="nav-menu">
-      <li><a href="product.html">Kainos Deep</a></li>
-      <li><a href="about.html">Our Mission</a></li>
-      <li class="nav-cta-mobile-item"><button type="button" class="nav-cta nav-cta--full" data-scroll="waitlist">Join waitlist</button></li>
+      <li><a href="product.html" data-nav-match="product">Kainos Deep</a></li>
+      <li><a href="about.html" data-nav-match="about">Our Mission</a></li>
+      <li class="nav-cta-mobile-item"><button type="button" class="nav-cta nav-cta--full" data-scroll="waitlist" data-nav-match="waitlist">Join waitlist</button></li>
     </ul>
-    <button type="button" class="nav-cta" data-scroll="waitlist">Join waitlist</button>
+    <button type="button" class="nav-cta" data-scroll="waitlist" data-nav-match="waitlist">Join waitlist</button>
   </div>
 </nav>
 </header>
 
 <main id="main">
 
-<section id="waitlist" class="hero-klaviyo section section--center section--cream">
+<section id="waitlist" class="hero-klaviyo section section--center section--navy" data-nav-target="home">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
   <div class="container container--narrow">
-    <p class="eyebrow eyebrow--center">Sleep &amp; recovery · Pre-launch</p>
-    <h1 class="h-display h-display--center">Deep sleep.<br>Real recovery.<br>Be made new.</h1>
-    <p class="lead lead--center">Clinically dosed sleep and recovery powder — wake genuinely restored. No prop blends, no fairy dust. Real ingredients at real doses.</p>
-    <p class="caption caption--center">Join the waitlist — founding pricing stays private until launch</p>
+    <p class="eyebrow eyebrow--center hero-eyebrow">Sleep &amp; recovery · Pre-launch</p>
+    <h1 class="h-display h-display--center h-display--on-dark">Deep sleep.<br>Real recovery.<br>Be made new.</h1>
+    <p class="lead lead--center hero-lead">Clinically dosed sleep and recovery powder — wake genuinely restored. No prop blends, no fairy dust. Real ingredients at real doses.</p>
+    <p class="caption caption--center hero-caption">Join the waitlist — founding pricing stays private until launch</p>
+    <div class="hero-tub" aria-hidden="true">
+      <svg viewBox="0 0 160 200" width="140" height="175" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="20" y="8" width="120" height="28" rx="8" fill="#F5F0E8" fill-opacity="0.15" stroke="#F5F0E8" stroke-width="1.5"/>
+        <rect x="10" y="36" width="140" height="140" rx="12" fill="#F5F0E8" fill-opacity="0.08" stroke="#F5F0E8" stroke-width="1.5"/>
+        <rect x="22" y="52" width="116" height="110" rx="6" fill="#F5F0E8" fill-opacity="0.06" stroke="#F5F0E8" stroke-width="0.75" stroke-dasharray="3 3"/>
+        <path d="M 48,78 C 62,64 98,64 112,78" fill="none" stroke="#F5F0E8" stroke-width="1" stroke-linecap="round"/>
+        <circle cx="48" cy="78" r="2" fill="#F5F0E8"/>
+        <circle cx="112" cy="78" r="2" fill="#F5F0E8"/>
+        <text x="80" y="108" text-anchor="middle" font-family="Georgia, serif" font-size="18" letter-spacing="4" fill="#F5F0E8" font-weight="400">KAINOS</text>
+        <text x="80" y="124" text-anchor="middle" font-family="Georgia, serif" font-size="9" letter-spacing="6" fill="#F5F0E8" fill-opacity="0.7">DEEP</text>
+        <line x1="30" y1="134" x2="130" y2="134" stroke="#F5F0E8" stroke-width="0.5" stroke-opacity="0.4"/>
+        <text x="80" y="146" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" letter-spacing="2.5" fill="#F5F0E8" fill-opacity="0.5">SLEEP &amp; RECOVERY</text>
+        <text x="80" y="158" text-anchor="middle" font-family="system-ui, sans-serif" font-size="7" letter-spacing="2" fill="#F5F0E8" fill-opacity="0.4">30 SERVINGS</text>
+      </svg>
+    </div>
+    <div class="hero-social-proof">
+      <div class="hero-social-proof__avatars" aria-hidden="true">
+        <svg width="148" height="32" viewBox="0 0 148 32" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="15" fill="#1e3a5f" stroke="#16213E" stroke-width="1.5"/>
+          <text x="16" y="20" text-anchor="middle" font-family="DM Sans,system-ui" font-size="9" fill="#F5F0E8">JC</text>
+          <circle cx="40" cy="16" r="15" fill="#2a4a6b" stroke="#16213E" stroke-width="1.5"/>
+          <text x="40" y="20" text-anchor="middle" font-family="DM Sans,system-ui" font-size="9" fill="#F5F0E8">MR</text>
+          <circle cx="64" cy="16" r="15" fill="#162a4a" stroke="#16213E" stroke-width="1.5"/>
+          <text x="64" y="20" text-anchor="middle" font-family="DM Sans,system-ui" font-size="9" fill="#F5F0E8">AT</text>
+          <circle cx="88" cy="16" r="15" fill="#1a3358" stroke="#16213E" stroke-width="1.5"/>
+          <text x="88" y="20" text-anchor="middle" font-family="DM Sans,system-ui" font-size="9" fill="#F5F0E8">SB</text>
+          <circle cx="112" cy="16" r="15" fill="#243f6b" stroke="#16213E" stroke-width="1.5"/>
+          <text x="112" y="20" text-anchor="middle" font-family="DM Sans,system-ui" font-size="9" fill="#F5F0E8">KL</text>
+        </svg>
+      </div>
+      <p class="hero-social-proof__text">
+        <strong>47 people</strong> joined the waitlist this week
+      </p>
+    </div>
     <div class="klaviyo-form-V8hLfp"></div>
   </div>
 </section>
@@ -99,7 +140,7 @@
   </div>
 </div>
 
-<section id="ingredients" class="ingredients-section section section--navy" aria-labelledby="ingredients-heading">
+<section id="ingredients" class="ingredients-section section section--navy section--wave-bottom" aria-labelledby="ingredients-heading" data-nav-target="product">
   <div class="container container--xl">
     <p class="eyebrow eyebrow--center eyebrow--on-dark">What&apos;s inside</p>
     <h2 id="ingredients-heading" class="h-section h-section--on-dark ingredients-section__title">Every ingredient. Every dose. Every reason.</h2>
@@ -109,6 +150,7 @@
           <div class="ingredient-card__face ingredient-card__face--front">
             <h3 class="ingredient-card__name">Ashwagandha KSM-66</h3>
             <p class="ingredient-card__dose">600mg</p>
+            <span class="ingredient-card__tag">Cortisol &amp; stress</span>
           </div>
           <div class="ingredient-card__face ingredient-card__face--back">
             <p class="ingredient-card__label">What it does</p>
@@ -125,6 +167,7 @@
           <div class="ingredient-card__face ingredient-card__face--front">
             <h3 class="ingredient-card__name">VitaCherry® Tart Cherry</h3>
             <p class="ingredient-card__dose">500mg</p>
+            <span class="ingredient-card__tag">Recovery</span>
           </div>
           <div class="ingredient-card__face ingredient-card__face--back">
             <p class="ingredient-card__label">What it does</p>
@@ -141,6 +184,7 @@
           <div class="ingredient-card__face ingredient-card__face--front">
             <h3 class="ingredient-card__name">Magnesium Bisglycinate</h3>
             <p class="ingredient-card__dose">200mg elemental</p>
+            <span class="ingredient-card__tag">Relaxation</span>
           </div>
           <div class="ingredient-card__face ingredient-card__face--back">
             <p class="ingredient-card__label">What it does</p>
@@ -157,6 +201,7 @@
           <div class="ingredient-card__face ingredient-card__face--front">
             <h3 class="ingredient-card__name">L-Theanine</h3>
             <p class="ingredient-card__dose">200mg</p>
+            <span class="ingredient-card__tag">Calm focus</span>
           </div>
           <div class="ingredient-card__face ingredient-card__face--back">
             <p class="ingredient-card__label">What it does</p>
@@ -173,6 +218,7 @@
           <div class="ingredient-card__face ingredient-card__face--front">
             <h3 class="ingredient-card__name">Apigenin</h3>
             <p class="ingredient-card__dose">50mg</p>
+            <span class="ingredient-card__tag">Sleep onset</span>
           </div>
           <div class="ingredient-card__face ingredient-card__face--back">
             <p class="ingredient-card__label">What it does</p>
@@ -189,6 +235,7 @@
           <div class="ingredient-card__face ingredient-card__face--front">
             <h3 class="ingredient-card__name">Zinc Bisglycinate</h3>
             <p class="ingredient-card__dose">11mg elemental</p>
+            <span class="ingredient-card__tag">Melatonin support</span>
           </div>
           <div class="ingredient-card__face ingredient-card__face--back">
             <p class="ingredient-card__label">What it does</p>
@@ -203,8 +250,43 @@
       <article class="ingredient-card" tabindex="0">
         <div class="ingredient-card__inner">
           <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">L-Glycine</h3>
+            <p class="ingredient-card__dose">3,000mg</p>
+            <span class="ingredient-card__tag">Deep sleep</span>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Lowers core body temperature to accelerate deep sleep onset and improve REM quality</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">3,000mg is the dose validated in human clinical sleep studies — the primary reason this is a powder</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">Cannot be delivered at this dose in capsule form — Kainos Deep is built around this ingredient</p>
+          </div>
+        </div>
+      </article>
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">L-Glutamine</h3>
+            <p class="ingredient-card__dose">2,000mg</p>
+            <span class="ingredient-card__tag">Recovery</span>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Supports overnight gut lining repair and muscle recovery</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">2,000mg provides meaningful overnight support for active individuals</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">Pairs with L-Glycine for a complete overnight rebuild stack</p>
+          </div>
+        </div>
+      </article>
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
             <h3 class="ingredient-card__name">Melatonin</h3>
             <p class="ingredient-card__dose">0.5mg</p>
+            <span class="ingredient-card__tag">Sleep onset</span>
           </div>
           <div class="ingredient-card__face ingredient-card__face--back">
             <p class="ingredient-card__label">What it does</p>
@@ -220,7 +302,86 @@
   </div>
 </section>
 
-<section class="founder-note section section--cream" aria-labelledby="founder-note-heading">
+<section id="sleep-science" class="sleep-science-section section section--navy section--wave-bottom" aria-labelledby="sleep-science-heading" data-nav-target="product">
+  <canvas id="science-canvas" aria-hidden="true"></canvas>
+  <div class="container container--xl">
+    <p class="eyebrow eyebrow--center eyebrow--on-dark">The science of sleep</p>
+    <h2 id="sleep-science-heading" class="h-section h-section--on-dark sleep-science__title">What happens while you sleep.</h2>
+    <div class="sleep-science__svg-wrap" role="img" aria-label="Sleep cycle diagram from 11 p.m. to 7 a.m., showing light sleep, deep sleep, and REM repeating twice">
+      <svg class="sleep-science__svg" viewBox="0 0 800 160" width="100%" xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="true">
+        <defs>
+          <linearGradient id="sleepLight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F5F0E8" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#F5F0E8" stop-opacity="0.25"/>
+          </linearGradient>
+          <linearGradient id="sleepDeep" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F5F0E8" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#F5F0E8" stop-opacity="0.75"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="20" width="95" height="56" fill="url(#sleepLight)" rx="2"/>
+        <rect x="100" y="20" width="95" height="56" fill="url(#sleepLight)" rx="2"/>
+        <rect x="200" y="20" width="95" height="56" fill="url(#sleepDeep)" rx="2"/>
+        <rect x="300" y="20" width="95" height="56" fill="#F5F0E8" stroke="#16213E" stroke-width="1.5" rx="2"/>
+        <rect x="400" y="20" width="95" height="56" fill="url(#sleepLight)" rx="2"/>
+        <rect x="500" y="20" width="95" height="56" fill="url(#sleepLight)" rx="2"/>
+        <rect x="600" y="20" width="95" height="56" fill="url(#sleepDeep)" rx="2"/>
+        <rect x="700" y="20" width="95" height="56" fill="#F5F0E8" stroke="#16213E" stroke-width="1.5" rx="2"/>
+        <text x="47.5" y="100" text-anchor="middle" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="9" opacity="0.85">Stage 1</text>
+        <text x="147.5" y="100" text-anchor="middle" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="9" opacity="0.85">Stage 2</text>
+        <text x="247.5" y="100" text-anchor="middle" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="9" opacity="0.85">Stage 3</text>
+        <text x="347.5" y="100" text-anchor="middle" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="9" opacity="0.85">REM</text>
+        <text x="447.5" y="100" text-anchor="middle" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="9" opacity="0.85">Stage 1</text>
+        <text x="547.5" y="100" text-anchor="middle" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="9" opacity="0.85">Stage 2</text>
+        <text x="647.5" y="100" text-anchor="middle" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="9" opacity="0.85">Stage 3</text>
+        <text x="747.5" y="100" text-anchor="middle" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="9" opacity="0.85">REM</text>
+        <text x="0" y="138" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="10" opacity="0.55">11pm</text>
+        <text x="200" y="138" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="10" opacity="0.55">1am</text>
+        <text x="400" y="138" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="10" opacity="0.55">3am</text>
+        <text x="600" y="138" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="10" opacity="0.55">5am</text>
+        <text x="760" y="138" fill="#F5F0E8" font-family="DM Sans, system-ui, sans-serif" font-size="10" opacity="0.55">7am</text>
+      </svg>
+    </div>
+    <p class="sleep-science__caption">Kainos Deep is formulated to support the conditions your body needs to reach and sustain Stage 3 deep sleep — where real physical recovery happens.</p>
+  </div>
+</section>
+
+<section id="supp-facts" class="supp-facts-section section section--cream section--wave-top" aria-labelledby="supp-facts-heading" data-nav-target="product">
+  <div class="container container--md">
+    <p class="eyebrow eyebrow--center">Full transparency</p>
+    <h2 id="supp-facts-heading" class="h-section h-section--center">Nothing hidden. Everything labeled.</h2>
+    <div class="supp-facts-wrap">
+      <p class="supp-facts-badge" role="status">Prop blend? Never.</p>
+      <div class="supp-facts-panel" role="region" aria-label="Supplement facts for Kainos Deep">
+        <p class="supp-facts-panel__title">Supplement Facts</p>
+        <p class="supp-facts-panel__serving">Serving Size: 1 Scoop (8.5g)</p>
+        <p class="supp-facts-panel__serving">Servings Per Container: 30</p>
+        <div class="supp-facts-panel__rule supp-facts-panel__rule--thick"></div>
+        <div class="supp-facts-panel__header-row">
+          <span></span>
+          <span class="supp-facts-panel__hdr-amt">Amount Per Serving</span>
+          <span class="supp-facts-panel__hdr-pct">% DV</span>
+        </div>
+        <div class="supp-facts-panel__rule"></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">Magnesium <span class="supp-facts-row__sub">(as Bisglycinate)</span></span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">250mg</span><span class="supp-facts-row__dv">60%</span></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">Zinc <span class="supp-facts-row__sub">(as Bisglycinate)</span></span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">11mg</span><span class="supp-facts-row__dv">100%</span></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">Ashwagandha Root Extract <span class="supp-facts-row__sub">(KSM-66)</span></span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">600mg</span><span class="supp-facts-row__dv">*</span></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">L-Theanine</span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">200mg</span><span class="supp-facts-row__dv">*</span></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">L-Glycine</span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">3,000mg</span><span class="supp-facts-row__dv">*</span></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">L-Glutamine</span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">2,000mg</span><span class="supp-facts-row__dv">*</span></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">Tart Cherry Extract <span class="supp-facts-row__sub">(VitaCherry®)</span></span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">500mg</span><span class="supp-facts-row__dv">*</span></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">Apigenin</span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">50mg</span><span class="supp-facts-row__dv">*</span></div>
+        <div class="supp-facts-row"><span class="supp-facts-row__name">Melatonin</span><span class="supp-facts-row__dots" aria-hidden="true"></span><span class="supp-facts-row__amt">0.5mg</span><span class="supp-facts-row__dv">*</span></div>
+        <div class="supp-facts-panel__rule supp-facts-panel__rule--thick"></div>
+        <p class="supp-facts-panel__asterisk">* Daily Value not established</p>
+        <p class="supp-facts-panel__other"><strong>Other Ingredients:</strong> Natural Flavors, Stevia, Silicon Dioxide, Malic Acid, Citric Acid.</p>
+        <p class="supp-facts-panel__fda">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="founder-note section section--navy founder-note--on-navy" aria-labelledby="founder-note-heading" data-nav-target="product">
   <div class="founder-note__inner">
     <p class="visually-hidden" id="founder-note-heading">Founder&apos;s note</p>
     <div class="founder-note__mark" aria-hidden="true">&ldquo;</div>
@@ -231,7 +392,7 @@
   </div>
 </section>
 
-<section class="home-different section section--secondary" aria-labelledby="home-diff-heading">
+<section class="home-different section section--secondary" aria-labelledby="home-diff-heading" data-nav-target="product">
   <div class="container container--lg">
     <header class="product-section-intro">
       <p class="eyebrow">What makes Kainos different</p>
@@ -240,18 +401,22 @@
     </header>
     <ul class="home-diff-grid">
       <li class="home-diff-card js-io-home-card" data-stagger="0">
+        <span class="home-diff-card__num" aria-hidden="true">01</span>
         <h3 class="home-diff-card__title">Transparent formulas</h3>
         <p class="home-diff-card__text">Every milligram disclosed. No proprietary blends, no fairy-dust sprinkles — for people who actually read the label.</p>
       </li>
       <li class="home-diff-card js-io-home-card" data-stagger="1">
+        <span class="home-diff-card__num" aria-hidden="true">02</span>
         <h3 class="home-diff-card__title">Powder by design</h3>
-        <p class="home-diff-card__text">Glycine and glutamine at real doses need volume a capsule can’t hold. We chose the format that fits the science.</p>
+        <p class="home-diff-card__text">L-Glycine at 3,000mg and L-Glutamine at 2,000mg — doses that actually move the needle on deep sleep and overnight recovery. Real volume for real results.</p>
       </li>
       <li class="home-diff-card js-io-home-card" data-stagger="2">
+        <span class="home-diff-card__num" aria-hidden="true">03</span>
         <h3 class="home-diff-card__title">Faith-forward stewardship</h3>
         <p class="home-diff-card__text">Quiet conviction over hype. Five percent to Christian causes — mission with margin.</p>
       </li>
       <li class="home-diff-card js-io-home-card" data-stagger="3">
+        <span class="home-diff-card__num" aria-hidden="true">04</span>
         <h3 class="home-diff-card__title">Founding access first</h3>
         <p class="home-diff-card__text">Join the waitlist; founding pricing is offered privately when we ship.</p>
       </li>
@@ -259,7 +424,71 @@
   </div>
 </section>
 
-<section class="site-faq site-faq--compact section section--cream" id="faq" aria-labelledby="home-faq-heading">
+<section id="vs-table" class="vs-section section section--navy" aria-labelledby="vs-heading" data-nav-target="product">
+  <div class="container container--lg">
+    <p class="eyebrow eyebrow--center eyebrow--on-dark">How we compare</p>
+    <h2 id="vs-heading" class="h-section h-section--on-dark">Most brands hope you don&apos;t read the label.</h2>
+    <div class="vs-table-wrap">
+      <table class="vs-table" role="table">
+        <thead>
+          <tr>
+            <th class="vs-table__hdr vs-table__hdr--feature">Feature</th>
+            <th class="vs-table__hdr vs-table__hdr--kainos">Kainos Deep</th>
+            <th class="vs-table__hdr">Typical competitor</th>
+            <th class="vs-table__hdr">Melatonin-only</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="vs-table__feature">Proprietary blends</td>
+            <td class="vs-table__kainos">None — ever</td>
+            <td>Often hidden</td>
+            <td>Sometimes</td>
+          </tr>
+          <tr>
+            <td class="vs-table__feature">Melatonin dose</td>
+            <td class="vs-table__kainos">0.5mg (science-backed)</td>
+            <td>5–10mg</td>
+            <td>5–10mg</td>
+          </tr>
+          <tr>
+            <td class="vs-table__feature">L-Glycine</td>
+            <td class="vs-table__kainos">3,000mg clinical dose</td>
+            <td>Rarely included</td>
+            <td>Never</td>
+          </tr>
+          <tr>
+            <td class="vs-table__feature">L-Glutamine</td>
+            <td class="vs-table__kainos">2,000mg</td>
+            <td>Rarely included</td>
+            <td>Never</td>
+          </tr>
+          <tr>
+            <td class="vs-table__feature">Ashwagandha form</td>
+            <td class="vs-table__kainos">KSM-66 clinically studied</td>
+            <td>Generic extract</td>
+            <td>Never</td>
+          </tr>
+          <tr>
+            <td class="vs-table__feature">Tart cherry</td>
+            <td class="vs-table__kainos">VitaCherry® branded</td>
+            <td>Generic or absent</td>
+            <td>Never</td>
+          </tr>
+          <tr>
+            <td class="vs-table__feature">Faith-driven mission</td>
+            <td class="vs-table__kainos">5% to Christian causes</td>
+            <td>No</td>
+            <td>No</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="vs-table__caption">Based on publicly available label information.</p>
+  </div>
+</section>
+
+<section class="site-faq site-faq--compact section section--cream" id="faq" aria-labelledby="home-faq-heading" data-nav-target="product">
   <div class="container container--md">
     <header class="product-section-intro product-section-intro--tight site-faq__head">
       <p class="eyebrow">Questions</p>
@@ -269,7 +498,7 @@
       <details class="product-disclosure js-io-disclosure">
         <summary class="product-disclosure__summary">What is Kainos Deep?</summary>
         <div class="product-disclosure__body">
-          <p>A nightly sleep and recovery powder with nine clinically dosed ingredients — transparent labeling, no proprietary blends, thirty servings per tub.</p>
+          <p>A nightly sleep and recovery powder with nine clinically dosed active ingredients — fully transparent labeling, zero proprietary blends, thirty servings per tub. Mix one scoop with 8–10oz cold water 30–60 minutes before bed.</p>
         </div>
       </details>
       <details class="product-disclosure js-io-disclosure">
@@ -295,25 +524,54 @@
   </div>
 </section>
 
-<section class="cta-band js-io-cta-band" aria-labelledby="cta-home-heading">
+<section id="cta-waitlist" class="cta-band js-io-cta-band" aria-labelledby="cta-home-heading" data-nav-target="waitlist">
+  <canvas id="cta-canvas" aria-hidden="true"></canvas>
   <div class="cta-band__inner js-io-cta-inner">
     <p class="eyebrow eyebrow--on-dark">Limited founding spots</p>
     <h2 id="cta-home-heading" class="h-section h-section--on-dark">Be first.<br>Stay first.</h2>
     <p class="lead lead--on-dark">Founding pricing for the first 100, by email when orders open — then standard retail. Join the list.</p>
-    <p class="quote-attribution">"Therefore, if anyone is in Christ, the new creation has come." — 2 Corinthians 5:17</p>
+    <p class="quote-attribution">&ldquo;Therefore, if anyone is in Christ, the new creation has come.&rdquo; — 2 Corinthians 5:17</p>
     <div class="klaviyo-form-V8hLfp"></div>
   </div>
 </section>
 
 </main>
 
-<footer class="site-footer-simple">
-  <nav class="footer-min" aria-label="Footer">
-    <a href="product.html">Kainos Deep</a>
-    <a href="product.html#faq">FAQ</a>
-    <a href="about.html">Mission</a>
-  </nav>
-  <p class="site-footer-simple__text">© 2026 Kainos Bio Labs · Be Made New · 5% of profits donated to Christian charitable causes · <script>document.write('<a href="mailto:hello@kainosbiolabs.com" class="footer-mail">hello@kainosbiolabs.com<\/a>');</script><noscript>hello [at] kainosbiolabs [dot] com</noscript></p>
+<footer class="site-footer-rich" aria-labelledby="footer-explore-heading footer-contact-heading">
+  <div class="site-footer-rich__inner">
+    <div class="site-footer-rich__col site-footer-rich__col--brand">
+      <a class="site-footer-rich__logo-link" href="index.html" aria-label="Kainos Bio Labs — home">
+        <img class="site-footer-rich__logo" src="kainos-logo-cream-on-navy.png" width="240" height="72" alt="" decoding="async"/>
+      </a>
+      <p class="site-footer-rich__tagline">Be Made New.</p>
+      <p class="site-footer-rich__copy">© 2026 Kainos Bio Labs</p>
+    </div>
+    <div class="site-footer-rich__col">
+      <h2 id="footer-explore-heading" class="site-footer-rich__heading">Explore</h2>
+      <ul class="site-footer-rich__list">
+        <li><a href="product.html">Kainos Deep</a></li>
+        <li><a href="about.html">Our Mission</a></li>
+        <li><a href="product.html#faq">FAQ</a></li>
+        <li><a href="#waitlist" data-scroll="waitlist">Join Waitlist</a></li>
+      </ul>
+    </div>
+    <div class="site-footer-rich__col">
+      <h2 id="footer-contact-heading" class="site-footer-rich__heading">Contact</h2>
+      <ul class="site-footer-rich__list">
+        <li><a href="mailto:support@kainosbiolabs.com" class="site-footer-rich__email">support@kainosbiolabs.com</a></li>
+        <li class="site-footer-rich__muted">Fort Worth, TX</li>
+        <li class="site-footer-rich__muted site-footer-rich__muted--small">5% of profits to Christian causes</li>
+        <li class="site-footer-rich__social">
+          <a href="https://instagram.com/kainosbiolabs" target="_blank" rel="noopener noreferrer" aria-label="Kainos on Instagram" class="site-footer-rich__social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </a>
+          <a href="https://tiktok.com/@kainosbiolabs" target="_blank" rel="noopener noreferrer" aria-label="Kainos on TikTok" class="site-footer-rich__social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-4.01v12.67a2.75 2.75 0 1 1-2.52-2.92c.08 0 .15 0 .22.01V12.4a6.17 6.17 0 0 0-1.09-.1A4.63 4.63 0 0 0 5 16.91a4.63 4.63 0 0 0 4.6 4.63 4.63 4.63 0 0 0 4.6-4.63V8.8a6.84 6.84 0 0 0 4.39 1.56V6.07a4.9 4.9 0 0 1-1-.1z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </footer>
 
 <script async type='text/javascript' src='https://static.klaviyo.com/onsite/js/Ubpd6k/klaviyo.js?company_id=Ubpd6k'></script>

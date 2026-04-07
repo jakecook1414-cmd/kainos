@@ -237,5 +237,297 @@
         card.classList.toggle('is-flipped');
       });
     });
+
+    /* In-page #waitlist links with data-scroll: avoid double navigation */
+    document.querySelectorAll('a[data-scroll="waitlist"][href^="#"]').forEach(function (a) {
+      a.addEventListener(
+        'click',
+        function (e) {
+          e.preventDefault();
+        },
+        true
+      );
+    });
+
+    /* —— Hero particle canvas, dot-grid canvases, nav scroll spy (index) —— */
+    var prefersCanvasReduced =
+      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function resizeCanvasToSection(canvas, section) {
+      if (!canvas || !section) return;
+      var dpr = window.devicePixelRatio || 1;
+      var w = section.offsetWidth;
+      var h = section.offsetHeight;
+      if (w === 0 || h === 0) return;
+      canvas.width = Math.floor(w * dpr);
+      canvas.height = Math.floor(h * dpr);
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      var ctx = canvas.getContext('2d');
+      if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function initHeroCanvas() {
+      var canvas = document.getElementById('hero-canvas');
+      var section = document.getElementById('waitlist');
+      if (!canvas || !section) return;
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      var particles = [];
+      var i;
+      var w = 0;
+      var h = 0;
+      var rafId = 0;
+
+      function rand(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function layout() {
+        resizeCanvasToSection(canvas, section);
+        w = section.offsetWidth;
+        h = section.offsetHeight;
+        particles = [];
+        for (i = 0; i < 60; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: rand(0.5, 2.5),
+            vx: rand(-0.15, 0.15),
+            vy: rand(-0.15, 0.15),
+            opacity: rand(0.2, 0.7),
+          });
+        }
+      }
+
+      function wrap(p) {
+        if (p.x < 0) p.x += w;
+        else if (p.x > w) p.x -= w;
+        if (p.y < 0) p.y += h;
+        else if (p.y > h) p.y -= h;
+      }
+
+      function drawFrame() {
+        var a;
+        var b;
+        var dx;
+        var dy;
+        var dist;
+        var alpha;
+        ctx.clearRect(0, 0, w, h);
+        for (a = 0; a < particles.length; a++) {
+          for (b = a + 1; b < particles.length; b++) {
+            dx = particles[a].x - particles[b].x;
+            dy = particles[a].y - particles[b].y;
+            dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 80 && dist > 0) {
+              alpha = (1 - dist / 80) * 0.15;
+              ctx.strokeStyle = 'rgba(245,240,232,' + alpha + ')';
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(particles[a].x, particles[a].y);
+              ctx.lineTo(particles[b].x, particles[b].y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (a = 0; a < particles.length; a++) {
+          ctx.fillStyle = 'rgba(245,240,232,' + particles[a].opacity + ')';
+          ctx.beginPath();
+          ctx.arc(particles[a].x, particles[a].y, particles[a].r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function step() {
+        var p;
+        for (p = 0; p < particles.length; p++) {
+          particles[p].x += particles[p].vx;
+          particles[p].y += particles[p].vy;
+          wrap(particles[p]);
+        }
+        drawFrame();
+        rafId = requestAnimationFrame(step);
+      }
+
+      function drawStatic() {
+        layout();
+        drawFrame();
+      }
+
+      layout();
+
+      if (prefersCanvasReduced) {
+        drawStatic();
+        window.addEventListener(
+          'resize',
+          function () {
+            layout();
+            drawFrame();
+          },
+          { passive: true }
+        );
+        return;
+      }
+
+      rafId = requestAnimationFrame(step);
+      window.addEventListener(
+        'resize',
+        function () {
+          if (rafId) cancelAnimationFrame(rafId);
+          layout();
+          rafId = requestAnimationFrame(step);
+        },
+        { passive: true }
+      );
+    }
+
+    function initDotCanvas(id) {
+      var canvas = document.getElementById(id);
+      if (!canvas) return;
+      var section = canvas.parentElement;
+      if (!section) return;
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      var time = 0;
+      var w = 0;
+      var h = 0;
+      var rafId = 0;
+
+      function layout() {
+        resizeCanvasToSection(canvas, section);
+        w = section.offsetWidth;
+        h = section.offsetHeight;
+      }
+
+      function drawStaticGrid() {
+        var gx;
+        var gy;
+        var opacity = 0.08;
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = 'rgba(245,240,232,' + opacity + ')';
+        for (gx = 15; gx < w; gx += 30) {
+          for (gy = 15; gy < h; gy += 30) {
+            ctx.beginPath();
+            ctx.arc(gx, gy, 1, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      function drawAnimated() {
+        var gx;
+        var gy;
+        var waveX;
+        var d;
+        var pulse;
+        var opacity;
+        time += 0.014;
+        waveX = (time * 42) % (w + 140) - 70;
+        ctx.clearRect(0, 0, w, h);
+        for (gx = 15; gx < w; gx += 30) {
+          for (gy = 15; gy < h; gy += 30) {
+            d = Math.abs(gx - waveX);
+            pulse = Math.exp(-(d * d) / (2 * 75 * 75));
+            opacity = 0.04 + pulse * 0.14;
+            ctx.fillStyle = 'rgba(245,240,232,' + opacity + ')';
+            ctx.beginPath();
+            ctx.arc(gx, gy, 1, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+        rafId = requestAnimationFrame(drawAnimated);
+      }
+
+      layout();
+
+      if (prefersCanvasReduced) {
+        drawStaticGrid();
+        window.addEventListener(
+          'resize',
+          function () {
+            layout();
+            drawStaticGrid();
+          },
+          { passive: true }
+        );
+        return;
+      }
+
+      rafId = requestAnimationFrame(drawAnimated);
+      window.addEventListener(
+        'resize',
+        function () {
+          if (rafId) cancelAnimationFrame(rafId);
+          layout();
+          rafId = requestAnimationFrame(drawAnimated);
+        },
+        { passive: true }
+      );
+    }
+
+    function initNavScrollSpy() {
+      var sections = document.querySelectorAll('[data-nav-target]');
+      if (!sections.length || typeof IntersectionObserver === 'undefined') return;
+
+      var ratios = new Map();
+      var thresholds = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+
+      function applyActive(target) {
+        document.querySelectorAll('[data-nav-match]').forEach(function (el) {
+          el.classList.toggle('active', el.getAttribute('data-nav-match') === target);
+        });
+      }
+
+      function pickActive() {
+        var bestT = null;
+        var bestR = 0;
+        sections.forEach(function (sec) {
+          var r = ratios.get(sec) || 0;
+          var t = sec.getAttribute('data-nav-target');
+          if (r >= 0.4 && r > bestR) {
+            bestR = r;
+            bestT = t;
+          }
+        });
+        applyActive(bestT);
+      }
+
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            ratios.set(entry.target, entry.intersectionRatio);
+          });
+          pickActive();
+        },
+        { root: null, rootMargin: '0px', threshold: thresholds }
+      );
+
+      sections.forEach(function (sec) {
+        io.observe(sec);
+      });
+    }
+
+    initHeroCanvas();
+    initDotCanvas('science-canvas');
+    initDotCanvas('cta-canvas');
+    initNavScrollSpy();
   });
 })();
+
+const progressBar = document.getElementById('scroll-progress');
+if (progressBar) {
+  window.addEventListener(
+    'scroll',
+    () => {
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const pct =
+        scrollable <= 0 ? 0 : Math.min(100, (window.scrollY / scrollable) * 100);
+      progressBar.style.width = pct + '%';
+    },
+    { passive: true }
+  );
+}
