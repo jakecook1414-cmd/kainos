@@ -81,23 +81,155 @@
 <div class="stats-bar" role="region" aria-label="At a glance">
   <div class="stats-bar-inner">
   <div class="stat-item">
-    <div class="stat-num">5%</div>
+    <div class="stat-num js-stat-num" data-target="5" data-format="percent" aria-live="polite">0%</div>
     <div class="stat-label">Profits to mission</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">9</div>
+    <div class="stat-num js-stat-num" data-target="9" data-format="int" aria-live="polite">0</div>
     <div class="stat-label">Active ingredients</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">0</div>
+    <div class="stat-num js-stat-num" data-target="0" data-format="int" aria-live="polite">0</div>
     <div class="stat-label">Proprietary blends</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">30</div>
+    <div class="stat-num js-stat-num" data-target="30" data-format="int" aria-live="polite">0</div>
     <div class="stat-label">Servings per tub</div>
   </div>
   </div>
 </div>
+
+<section id="ingredients" class="ingredients-section section section--navy" aria-labelledby="ingredients-heading">
+  <div class="container container--xl">
+    <p class="eyebrow eyebrow--center eyebrow--on-dark">What&apos;s inside</p>
+    <h2 id="ingredients-heading" class="h-section h-section--on-dark ingredients-section__title">Every ingredient. Every dose. Every reason.</h2>
+    <div class="ingredients-grid">
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">Ashwagandha KSM-66</h3>
+            <p class="ingredient-card__dose">600mg</p>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Lowers cortisol — the stress hormone keeping you wired at night</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">600mg is the dose used in human clinical trials</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">Statistically significant cortisol reduction in 8-week double-blind RCT</p>
+          </div>
+        </div>
+      </article>
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">VitaCherry® Tart Cherry</h3>
+            <p class="ingredient-card__dose">500mg</p>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Supports natural melatonin production and reduces muscle soreness</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">500mg of 10:1 concentrate = 5,000mg whole tart cherry equivalent</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">Reduces DOMS markers and supports overnight recovery</p>
+          </div>
+        </div>
+      </article>
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">Magnesium Bisglycinate</h3>
+            <p class="ingredient-card__dose">200mg elemental</p>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Activates GABA receptors, relaxes muscles, regulates melatonin</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">200mg elemental from bisglycinate — highest bioavailability form</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">Bisglycinate absorbs at ~80% vs 4% for magnesium oxide</p>
+          </div>
+        </div>
+      </article>
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">L-Theanine</h3>
+            <p class="ingredient-card__dose">200mg</p>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Calms mental chatter and promotes alpha brain waves without sedation</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">200mg is the threshold dose for measurable alpha wave activity</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">No grogginess, no dependency, no rebound — just quiet focus</p>
+          </div>
+        </div>
+      </article>
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">Apigenin</h3>
+            <p class="ingredient-card__dose">50mg</p>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Modulates GABA-A receptors for fast relaxation onset</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">50mg from chamomile extract — directionally effective dose</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">The same mechanism as chamomile tea — concentrated and standardized</p>
+          </div>
+        </div>
+      </article>
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">Zinc Bisglycinate</h3>
+            <p class="ingredient-card__dose">11mg elemental</p>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Supports overnight melatonin synthesis and immune function</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">11mg elemental — 100% daily value from the most absorbable form</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">Part of the magnesium-zinc-melatonin trio in an 8-week double-blind RCT</p>
+          </div>
+        </div>
+      </article>
+      <article class="ingredient-card" tabindex="0">
+        <div class="ingredient-card__inner">
+          <div class="ingredient-card__face ingredient-card__face--front">
+            <h3 class="ingredient-card__name">Melatonin</h3>
+            <p class="ingredient-card__dose">0.5mg</p>
+          </div>
+          <div class="ingredient-card__face ingredient-card__face--back">
+            <p class="ingredient-card__label">What it does</p>
+            <p class="ingredient-card__copy">Guides your body&apos;s natural sleep onset signal</p>
+            <p class="ingredient-card__label">Why this dose</p>
+            <p class="ingredient-card__copy">Competitors use 5–10mg. Science supports 0.3–0.5mg for onset.</p>
+            <p class="ingredient-card__label">Science</p>
+            <p class="ingredient-card__copy ingredient-card__copy--science">Higher doses suppress your own melatonin production over time</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="founder-note section section--cream" aria-labelledby="founder-note-heading">
+  <div class="founder-note__inner">
+    <p class="visually-hidden" id="founder-note-heading">Founder&apos;s note</p>
+    <div class="founder-note__mark" aria-hidden="true">&ldquo;</div>
+    <blockquote class="founder-note__quote">
+      <p>I built Kainos because I was tired of buying supplements that looked great on the label and did nothing in real life. Every ingredient in Kainos Deep is there for a reason, at the dose that the research actually supports. Not a milligram more, not a milligram less. This is the product I wished existed. <span class="founder-note__attribution-inline">— Jake Cook, Founder</span></p>
+    </blockquote>
+    <p class="founder-note__meta">Fort Worth, TX · Faith-driven · Be Made New</p>
+  </div>
+</section>
 
 <section class="home-different section section--secondary" aria-labelledby="home-diff-heading">
   <div class="container container--lg">
@@ -107,19 +239,19 @@
       <p class="product-why__deck">Science-backed doses, full transparency — a brand you can stand behind.</p>
     </header>
     <ul class="home-diff-grid">
-      <li class="home-diff-card">
+      <li class="home-diff-card js-io-home-card" data-stagger="0">
         <h3 class="home-diff-card__title">Transparent formulas</h3>
         <p class="home-diff-card__text">Every milligram disclosed. No proprietary blends, no fairy-dust sprinkles — for people who actually read the label.</p>
       </li>
-      <li class="home-diff-card">
+      <li class="home-diff-card js-io-home-card" data-stagger="1">
         <h3 class="home-diff-card__title">Powder by design</h3>
         <p class="home-diff-card__text">Glycine and glutamine at real doses need volume a capsule can’t hold. We chose the format that fits the science.</p>
       </li>
-      <li class="home-diff-card">
+      <li class="home-diff-card js-io-home-card" data-stagger="2">
         <h3 class="home-diff-card__title">Faith-forward stewardship</h3>
         <p class="home-diff-card__text">Quiet conviction over hype. Five percent to Christian causes — mission with margin.</p>
       </li>
-      <li class="home-diff-card">
+      <li class="home-diff-card js-io-home-card" data-stagger="3">
         <h3 class="home-diff-card__title">Founding access first</h3>
         <p class="home-diff-card__text">Join the waitlist; founding pricing is offered privately when we ship.</p>
       </li>
@@ -134,25 +266,25 @@
       <h2 id="home-faq-heading" class="h-section">Before you join the list</h2>
     </header>
     <div class="product-disclosure-stack product-disclosure-stack--editorial site-faq__stack">
-      <details class="product-disclosure">
+      <details class="product-disclosure js-io-disclosure">
         <summary class="product-disclosure__summary">What is Kainos Deep?</summary>
         <div class="product-disclosure__body">
           <p>A nightly sleep and recovery powder with nine clinically dosed ingredients — transparent labeling, no proprietary blends, thirty servings per tub.</p>
         </div>
       </details>
-      <details class="product-disclosure">
+      <details class="product-disclosure js-io-disclosure">
         <summary class="product-disclosure__summary">Who is it for?</summary>
         <div class="product-disclosure__body">
           <p>Adults who train hard, work long days, and want to wake up restored — not wired, not groggy. If you’re pregnant, nursing, or on medication, ask your doctor first.</p>
         </div>
       </details>
-      <details class="product-disclosure">
+      <details class="product-disclosure js-io-disclosure">
         <summary class="product-disclosure__summary">When does it launch?</summary>
         <div class="product-disclosure__body">
           <p>Pre-launch for 2026. Waitlist members hear first, with private founding access before retail.</p>
         </div>
       </details>
-      <details class="product-disclosure">
+      <details class="product-disclosure js-io-disclosure">
         <summary class="product-disclosure__summary">What is founding-member pricing?</summary>
         <div class="product-disclosure__body">
           <p>Limited spots at subscriber-only rates — never published here. When they’re filled, pricing moves to planned retail.</p>
@@ -163,8 +295,8 @@
   </div>
 </section>
 
-<section class="cta-band" aria-labelledby="cta-home-heading">
-  <div class="cta-band__inner">
+<section class="cta-band js-io-cta-band" aria-labelledby="cta-home-heading">
+  <div class="cta-band__inner js-io-cta-inner">
     <p class="eyebrow eyebrow--on-dark">Limited founding spots</p>
     <h2 id="cta-home-heading" class="h-section h-section--on-dark">Be first.<br>Stay first.</h2>
     <p class="lead lead--on-dark">Founding pricing for the first 100, by email when orders open — then standard retail. Join the list.</p>
