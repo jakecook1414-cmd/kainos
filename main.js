@@ -56,14 +56,54 @@
       menu.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Open menu');
+      document.body.classList.remove('site-nav--menu-open');
     }
 
     if (toggle && menu) {
+      function menuFocusables() {
+        return Array.prototype.filter.call(
+          menu.querySelectorAll('a[href], button:not([disabled])'),
+          function (el) {
+            return el.offsetWidth > 0 && el.offsetHeight > 0;
+          }
+        );
+      }
+
+      function focusFirstNavLink() {
+        var items = menuFocusables();
+        if (items.length) items[0].focus();
+      }
+
+      menu.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab' || !menu.classList.contains('is-open')) return;
+        var items = menuFocusables();
+        if (items.length === 0) return;
+        var first = items[0];
+        var last = items[items.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
       toggle.addEventListener('click', function () {
         var open = !menu.classList.contains('is-open');
         menu.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open);
         toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.classList.toggle('site-nav--menu-open', open);
+        if (open) {
+          requestAnimationFrame(function () {
+            requestAnimationFrame(focusFirstNavLink);
+          });
+        }
       });
       menu.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', closeMenu);
@@ -71,6 +111,21 @@
       menu.querySelectorAll('button').forEach(function (btn) {
         btn.addEventListener('click', closeMenu);
       });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+          closeMenu();
+          toggle.focus();
+        }
+      });
+
+      if (window.matchMedia) {
+        var mqWide = window.matchMedia('(min-width: 769px)');
+        function onWideNav(e) {
+          if (e.matches && menu.classList.contains('is-open')) closeMenu();
+        }
+        if (mqWide.addEventListener) mqWide.addEventListener('change', onWideNav);
+        else mqWide.addListener(onWideNav);
+      }
     }
 
     document.querySelectorAll('[data-scroll="waitlist"]').forEach(function (btn) {
@@ -274,78 +329,148 @@
       var ctx = canvas.getContext('2d');
       if (!ctx) return;
 
-      var particles = [];
-      var i;
+      var stars = [];
       var w = 0;
       var h = 0;
       var rafId = 0;
+      var startTime = performance.now();
 
       function rand(min, max) {
         return min + Math.random() * (max - min);
+      }
+
+      function pushStars(count, layer, minR, maxR, minOp, maxOp, toneOrNull) {
+        var i;
+        var t;
+        for (i = 0; i < count; i++) {
+          t =
+            toneOrNull === null
+              ? Math.random() > 0.52
+                ? 'cool'
+                : 'cream'
+              : toneOrNull;
+          stars.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: rand(minR, maxR),
+            base: rand(minOp, maxOp),
+            phase: rand(0, Math.PI * 2),
+            speed: rand(0.35, 1.05),
+            layer: layer,
+            tone: t,
+            glow: layer === 2 && Math.random() < 0.35,
+          });
+        }
       }
 
       function layout() {
         resizeCanvasToSection(canvas, section);
         w = section.offsetWidth;
         h = section.offsetHeight;
-        particles = [];
-        for (i = 0; i < 60; i++) {
-          particles.push({
-            x: Math.random() * w,
-            y: Math.random() * h,
-            r: rand(0.5, 2.5),
-            vx: rand(-0.15, 0.15),
-            vy: rand(-0.15, 0.15),
-            opacity: rand(0.2, 0.7),
-          });
+        startTime = performance.now();
+        stars = [];
+        if (w < 2 || h < 2) return;
+
+        var area = w * h;
+        var nFar = Math.min(158, Math.max(80, Math.floor(area / 13500)));
+        var nMid = Math.min(58, Math.max(24, Math.floor(area / 32000)));
+        var nBright = Math.min(14, Math.max(5, Math.floor(area / 95000)));
+        var maxStars = 228;
+        if (nFar + nMid + nBright > maxStars) {
+          var scale = maxStars / (nFar + nMid + nBright);
+          nFar = Math.max(72, Math.floor(nFar * scale));
+          nMid = Math.max(22, Math.floor(nMid * scale));
+          nBright = Math.max(5, Math.floor(nBright * scale));
         }
+
+        pushStars(nFar, 0, 0.28, 0.95, 0.12, 0.42, 'cool');
+        pushStars(nMid, 1, 0.45, 1.35, 0.22, 0.62, null);
+        pushStars(nBright, 2, 0.9, 2.15, 0.38, 0.92, 'cream');
       }
 
-      function wrap(p) {
-        if (p.x < 0) p.x += w;
-        else if (p.x > w) p.x -= w;
-        if (p.y < 0) p.y += h;
-        else if (p.y > h) p.y -= h;
+      function toneRgba(tone, alpha) {
+        if (tone === 'cool') return 'rgba(188,210,242,' + alpha + ')';
+        return 'rgba(245,240,232,' + alpha + ')';
+      }
+
+      function drawMilkyHaze() {
+        var g = ctx.createLinearGradient(w * 0.08, h * 0.05, w * 0.92, h * 0.88);
+        g.addColorStop(0, 'rgba(55, 75, 120, 0.07)');
+        g.addColorStop(0.35, 'rgba(45, 62, 105, 0.05)');
+        g.addColorStop(0.52, 'rgba(30, 45, 82, 0.06)');
+        g.addColorStop(1, 'rgba(22, 33, 62, 0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, w, h);
+
+        var wash = ctx.createRadialGradient(
+          w * 0.42,
+          h * 0.12,
+          0,
+          w * 0.5,
+          h * 0.35,
+          Math.max(w, h) * 0.72
+        );
+        wash.addColorStop(0, 'rgba(90, 108, 155, 0.045)');
+        wash.addColorStop(0.5, 'rgba(60, 78, 120, 0.02)');
+        wash.addColorStop(1, 'rgba(22, 33, 62, 0)');
+        ctx.fillStyle = wash;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      function twinkleFactor(star, tSeconds) {
+        if (prefersCanvasReduced) return 1;
+        var s1 = Math.sin(tSeconds * star.speed + star.phase);
+        var s2 = Math.sin(tSeconds * star.speed * 0.47 + star.phase * 1.3);
+        return 0.78 + 0.22 * (0.65 * s1 + 0.35 * s2);
+      }
+
+      function drawStar(star, tSeconds) {
+        var tw = twinkleFactor(star, tSeconds);
+        var alpha = Math.min(1, star.base * tw);
+
+        if (star.glow && star.layer === 2) {
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = toneRgba(star.tone, alpha * 0.45);
+        } else {
+          ctx.shadowBlur = 0;
+        }
+
+        ctx.fillStyle = toneRgba(star.tone, alpha);
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        if (star.layer === 2 && star.r > 1.15 && alpha > 0.45) {
+          ctx.strokeStyle = toneRgba(star.tone, alpha * 0.22);
+          ctx.lineWidth = 0.35;
+          ctx.beginPath();
+          ctx.moveTo(star.x - star.r * 2.2, star.y);
+          ctx.lineTo(star.x + star.r * 2.2, star.y);
+          ctx.moveTo(star.x, star.y - star.r * 2.2);
+          ctx.lineTo(star.x, star.y + star.r * 2.2);
+          ctx.stroke();
+        }
       }
 
       function drawFrame() {
-        var a;
-        var b;
-        var dx;
-        var dy;
-        var dist;
-        var alpha;
+        var tSeconds = (performance.now() - startTime) / 1000;
+        var L;
+        var s;
         ctx.clearRect(0, 0, w, h);
-        for (a = 0; a < particles.length; a++) {
-          for (b = a + 1; b < particles.length; b++) {
-            dx = particles[a].x - particles[b].x;
-            dy = particles[a].y - particles[b].y;
-            dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 80 && dist > 0) {
-              alpha = (1 - dist / 80) * 0.15;
-              ctx.strokeStyle = 'rgba(245,240,232,' + alpha + ')';
-              ctx.lineWidth = 0.5;
-              ctx.beginPath();
-              ctx.moveTo(particles[a].x, particles[a].y);
-              ctx.lineTo(particles[b].x, particles[b].y);
-              ctx.stroke();
-            }
+        drawMilkyHaze();
+
+        for (L = 0; L < 3; L++) {
+          for (s = 0; s < stars.length; s++) {
+            if (stars[s].layer === L) drawStar(stars[s], tSeconds);
           }
-        }
-        for (a = 0; a < particles.length; a++) {
-          ctx.fillStyle = 'rgba(245,240,232,' + particles[a].opacity + ')';
-          ctx.beginPath();
-          ctx.arc(particles[a].x, particles[a].y, particles[a].r, 0, Math.PI * 2);
-          ctx.fill();
         }
       }
 
       function step() {
-        var p;
-        for (p = 0; p < particles.length; p++) {
-          particles[p].x += particles[p].vx;
-          particles[p].y += particles[p].vy;
-          wrap(particles[p]);
+        if (window._kbHidden) {
+          rafId = requestAnimationFrame(step);
+          return;
         }
         drawFrame();
         rafId = requestAnimationFrame(step);
@@ -358,29 +483,26 @@
 
       layout();
 
+      var resizeDebounce = null;
+      function scheduleHeroResize() {
+        if (resizeDebounce) clearTimeout(resizeDebounce);
+        resizeDebounce = setTimeout(function () {
+          resizeDebounce = null;
+          if (rafId) cancelAnimationFrame(rafId);
+          layout();
+          if (prefersCanvasReduced) drawFrame();
+          else rafId = requestAnimationFrame(step);
+        }, 140);
+      }
+
       if (prefersCanvasReduced) {
         drawStatic();
-        window.addEventListener(
-          'resize',
-          function () {
-            layout();
-            drawFrame();
-          },
-          { passive: true }
-        );
+        window.addEventListener('resize', scheduleHeroResize, { passive: true });
         return;
       }
 
       rafId = requestAnimationFrame(step);
-      window.addEventListener(
-        'resize',
-        function () {
-          if (rafId) cancelAnimationFrame(rafId);
-          layout();
-          rafId = requestAnimationFrame(step);
-        },
-        { passive: true }
-      );
+      window.addEventListener('resize', scheduleHeroResize, { passive: true });
     }
 
     function initDotCanvas(id) {
@@ -418,6 +540,7 @@
       }
 
       function drawAnimated() {
+        if (window._kbHidden) { rafId = requestAnimationFrame(drawAnimated); return; }
         var gx;
         var gy;
         var waveX;
@@ -531,3 +654,10 @@ if (progressBar) {
     { passive: true }
   );
 }
+
+/* Expose a global hidden flag; canvas step functions skip draws when true.
+   Browsers already throttle background-tab RAF, but this stops the logic too. */
+window._kbHidden = document.hidden;
+document.addEventListener('visibilitychange', function () {
+  window._kbHidden = document.hidden;
+});
