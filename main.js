@@ -129,16 +129,109 @@
     }
 
     document.querySelectorAll('[data-scroll="waitlist"]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
+      btn.addEventListener('click', function (e) {
         closeMenu();
         var target = document.getElementById('waitlist');
         if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (e && typeof e.preventDefault === 'function') e.preventDefault();
+          target.scrollIntoView({
+            behavior: prefersReduced ? 'auto' : 'smooth',
+            block: 'start',
+          });
         } else {
-          window.location.href = 'index.html#waitlist';
+          if (e && typeof e.preventDefault === 'function') e.preventDefault();
+          window.location.href = 'index.html?scrollTo=waitlist#waitlist';
         }
       });
     });
+
+    function initKlaviyoGenerateLeadTracking() {
+      var lastFire = 0;
+      function fireGenerateLead(placement) {
+        var now = Date.now();
+        if (now - lastFire < 1200) return;
+        lastFire = now;
+        if (typeof window.gtag !== 'function') return;
+        var label =
+          placement === 'hero'
+            ? 'Klaviyo Signup — Hero'
+            : placement === 'footer'
+              ? 'Klaviyo Signup — Footer'
+              : 'Klaviyo Signup';
+        window.gtag('event', 'generate_lead', {
+          event_category: 'Waitlist',
+          event_label: label,
+          value: 1,
+        });
+      }
+
+      document.addEventListener('klaviyoForms', function (e) {
+        if (!e.detail) return;
+        var type = String(e.detail.type || '');
+        if (
+          type === 'submit' ||
+          type === 'subscribe' ||
+          type === 'completed' ||
+          type === 'success' ||
+          type === 'redirectedToUrl' ||
+          (e.detail.metaData &&
+            String(e.detail.metaData.stepName || '').toLowerCase().indexOf('success') !== -1)
+        ) {
+          fireGenerateLead(null);
+        }
+      });
+
+      function subtreeLooksLikeSuccess(root) {
+        if (!root || !root.querySelectorAll) return false;
+        var nodes = root.querySelectorAll(
+          '[class*="success"], [class*="thank"], [class*="subscribed"], [data-testid*="success"], [aria-live="polite"]'
+        );
+        var i;
+        for (i = 0; i < nodes.length; i++) {
+          var t = (nodes[i].textContent || '').toLowerCase();
+          if (
+            /thank\s*you|you.re\s*(in|subscribed|on\s*the\s*list)|successfully\s*subscribed|check\s*your\s*email|you.re\s*all\s*set/.test(
+              t
+            )
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      document.querySelectorAll('.klaviyo-form-V8hLfp').forEach(function (container) {
+        var placement = container.getAttribute('data-waitlist-placement') || '';
+        var obs = new MutationObserver(function () {
+          if (subtreeLooksLikeSuccess(container)) fireGenerateLead(placement);
+        });
+        obs.observe(container, { childList: true, subtree: true, characterData: true });
+      });
+    }
+
+    initKlaviyoGenerateLeadTracking();
+
+    function initLandingScrollHints() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('scrollTo') === 'waitlist';
+        var h = window.location.hash === '#waitlist';
+        if (!q && !h) return;
+        var el = document.getElementById('waitlist');
+        if (!el) return;
+        var run = function () {
+          el.scrollIntoView({
+            behavior: prefersReduced ? 'auto' : 'smooth',
+            block: 'start',
+          });
+        };
+        requestAnimationFrame(function () {
+          setTimeout(run, h ? 50 : 0);
+        });
+      } catch (e2) {}
+    }
+
+    initLandingScrollHints();
 
     /* —— Home: IntersectionObserver animations (stats, cards, FAQ, CTA) + ingredient tap —— */
     var prefersReducedMotion =
